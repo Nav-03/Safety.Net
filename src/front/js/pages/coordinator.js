@@ -13,6 +13,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/coordinator.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 
@@ -23,7 +24,7 @@ export const Coordinator = () => {
 
     return (
         // < !--Editable table-- >
-        <div className="card">
+        <div className="table container-fluid">
             <h3 className="card-header text-center font-weight-bold text-uppercase py-4">
                 Editable table
             </h3>
