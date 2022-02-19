@@ -32,6 +32,9 @@ const Layout = () => {
 						<Route exact path="/coordinator">
 							<Coordinator />
 						</Route>
+						<Route exact path="/IDcard">
+							<IDcard />
+						</Route>
 						<Route exact path="/demo">
 							<Demo />
 						</Route>

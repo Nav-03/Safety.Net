@@ -14,6 +14,10 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/coordinator.css";
 
+
+
+
+
 export const Coordinator = () => {
     const { store, actions } = useContext(Context);
 
