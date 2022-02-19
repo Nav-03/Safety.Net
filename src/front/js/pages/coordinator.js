@@ -45,6 +45,7 @@ export const Coordinator = () => {
                                 <td className="pt-3-half" contentEditable="true">AVega@email.com</td>
                                 <td className="pt-3-half" contentEditable="false">VIP</td>
                                 <td className="pt-3-half">
+                                    {/* details button will link to members ID card */}
                                     <span className="table-details"
                                     ><button type="button" className="btn btn-primary btn-rounded btn-sm my-0">
                                             Details
