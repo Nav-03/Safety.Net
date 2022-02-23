@@ -26,7 +26,7 @@ export const Coordinator = () => {
         // < !--Editable table-- >
         <div className="table container-fluid">
             <h3 className="card-header text-center font-weight-bold text-uppercase py-4">
-                Editable table
+                Editable table / Guest list
             </h3>
             <div className="card-body">
                 <div id="table" className="table-editable">
@@ -51,11 +51,13 @@ export const Coordinator = () => {
                                 <td className="pt-3-half" contentEditable="false">VIP</td>
                                 <td className="pt-3-half">
                                     {/* details button will link to members ID card */}
-                                    <span className="table-details"
-                                    ><button type="button" className="btn btn-primary btn-rounded btn-sm my-0">
+                                    <span className="table-details">
+
+
+                                        <button type="button" className="btn btn-primary btn-rounded btn-sm my-0">
                                             Details
-                                        </button></span
-                                    >
+                                        </button></span>
+
                                 </td>
                                 <td>
                                     <span className="table-remove"
