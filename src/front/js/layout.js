@@ -9,6 +9,7 @@ import { Coordinator } from "./pages/coordinator.js";
 import { Members } from "./pages/members.js";
 import { Main_event } from "./pages/main_event.js";
 import { IDcard } from "./pages/IDcard.js";
+import { AdminLogin } from "./pages/admin_login.js";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -37,6 +38,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/admin_login">
+							<AdminLogin />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

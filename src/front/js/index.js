@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "../styles/index.css";
 import "../styles/coordinator.css";
 import "../styles/IDcard.css";
+import "../styles/admin_login.css";
 
 //import your own components
 import Layout from "./layout";
