@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import * as Icons from "react-icons/fa";
+import "./Navbar.css";
+import { navItems } from "./NavItems";
+import Button from "./Button";
+import Dropdown from "./Dropdown";
 
 export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
+  const [dropdown, setDropdown] = useState(false);
+
+  return (
+    <>
+      <nav className="navbar">
+        <Link to="/" className="navbar-logo">
+          NameOfTheApp/Logo
+          
+        </Link>
+        <ul className="nav-items">
+          {navItems.map((item) => {
+            if (item.title === "Events") {
+              return (
+                <li
+                  key={item.id}
+                  className={item.cName}
+                  onMouseEnter={() => setDropdown(true)}
+                  onMouseLeave={() => setDropdown(false)}
+                >
+                  <Link to={item.path}>{item.title}</Link>
+                  {dropdown && <Dropdown />}
+                </li>
+              );
+            }
+            return (
+              <li key={item.id} className={item.cName}>
+                <Link to={item.path}>{item.title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+        <Button />
+      </nav>
+    </>
+  );
 };
