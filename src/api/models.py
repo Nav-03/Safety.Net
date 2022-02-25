@@ -36,41 +36,41 @@ class Coordinator(db.Model):
 #             # do not serialize the password, its a security breach
 #         }
 
-# class Event(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     event_name = db.Column(db.String(120), unique=True, nullable=False)
-#     event_id = db.Column(db.Integer, db.ForeignKey('Event.id'))
-#     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    event_name = db.Column(db.String(120), unique=True, nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('Event.id'))
+    # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
-#     def __repr__(self):
-#         return f'Event {self.id}'
+    def __repr__(self):
+        return f'Event {self.id}'
 
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "event_name": self.event_name,
-#             "event_id": self.event_id,
-#             # do not serialize the password, its a security breach
-#         }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "event_name": self.event_name,
+            "event_id": self.event_id,
+            # do not serialize the password, its a security breach
+        }
 
-# class Room(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     room_name = db.Column(db.String(120), unique=True, nullable=False)
-#     event_id = db.Column(db.Integer, db.ForeignKey('Event.id'))
-#     permission_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
-#     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+class Room(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    room_name = db.Column(db.String(120), unique=True, nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('Event.id'))
+    permission_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
+    # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
-#     def __repr__(self):
-#         return f'Room {self.id}'
+    def __repr__(self):
+        return f'Room {self.id}'
 
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "room_name": self.room_name,
-#             "event_id": self.event_id,
-#             "permission_id": self.permission_id,
-#             # do not serialize the password, its a security breach
-#         }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "room_name": self.room_name,
+            "event_id": self.event_id,
+            "permission_id": self.permission_id,
+            # do not serialize the password, its a security breach
+        }
 
 # class Token(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
