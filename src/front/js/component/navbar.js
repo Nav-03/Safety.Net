@@ -14,7 +14,7 @@ export const Navbar = () => {
       <nav className="navbar">
         <Link to="/" className="navbar-logo">
           NameOfTheApp/Logo
-          
+
         </Link>
         <ul className="nav-items">
           {navItems.map((item) => {

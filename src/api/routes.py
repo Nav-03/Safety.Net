@@ -3,12 +3,12 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Coordinator
-from api.models import db, Event_Coordinator
-from api.models import db, Event
-from api.models import db, Room
-from api.models import db, Token
-from api.models import db, TokenPermission
-from api.models import db, Permission
+# from api.models import db, Event_Coordinator
+# from api.models import db, Event
+# from api.models import db, Room
+# from api.models import db, Token
+# from api.models import db, TokenPermission
+# from api.models import db, Permission
 from api.utils import generate_sitemap, APIException
 # from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
@@ -26,39 +26,39 @@ api = Blueprint('api', __name__)
 
 
 
-@api.route('/Coordinator', methods=['POST'])
-def create_Coordinator():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(Coordinator)
+@api.route('/coordinator', methods=['POST'])
+def create_coordinator():
+    coordinator = Coordinator(email=email, password=password)
+    db.session.add(coordinator)
     db.session.commit()
-    return jsonify(Coordinator.serialize())
+    return jsonify(coordinator.serialize())
 
 
-@api.route('/Event_Coordinator', methods=['GET'])
-def Event_Coordinator():
-    Coordinator_id = request.json.get('Coordinator_Id', None) 
-    Event_id = request.json.get('Event_Id', None)
+# @api.route('/Event_Coordinator', methods=['GET'])
+# def Event_Coordinator():
+#     Coordinator_id = request.json.get('Coordinator_Id', None) 
+#     Event_id = request.json.get('Event_Id', None)
 
-@api.route('/Event', methods=['GET'])
-def Event():
-    Event_Name = request.json.get('Event_Name', None)
-    Event_id = request.json.get('Event_Id', None)
+# @api.route('/Event', methods=['GET'])
+# def Event():
+#     Event_Name = request.json.get('Event_Name', None)
+#     Event_id = request.json.get('Event_Id', None)
    
-@api.route('/Room', methods=['GET'])
-def Room():
-    Room_Name = request.json.get('Room_Name', None)
-    Event_id = request.json.get('Event_Id', None)
-    Permission_id = request.json.get('Permission_id', None)
+# @api.route('/Room', methods=['GET'])
+# def Room():
+#     Room_Name = request.json.get('Room_Name', None)
+#     Event_id = request.json.get('Event_Id', None)
+#     Permission_id = request.json.get('Permission_id', None)
 
 
-@api.route('/TokenPermission', methods=['GET'])
-def TokenPermission():
-    Token_id = request.json.get('Token_id', None)
-    Permission_id = request.json.get('Permission_id', None)
+# @api.route('/TokenPermission', methods=['GET'])
+# def TokenPermission():
+#     Token_id = request.json.get('Token_id', None)
+#     Permission_id = request.json.get('Permission_id', None)
 
-@api.route('/Permission', methods=['GET'])
-def Permission():
-     Event_id = request.json.get('Event_Id', None)
+# @api.route('/Permission', methods=['GET'])
+# def Permission():
+#      Event_id = request.json.get('Event_Id', None)
 
 
 
