@@ -6,7 +6,7 @@ class Coordinator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return f'Coordinator {self.id}'
@@ -86,11 +86,12 @@ class Token(db.Model):
         return {
             "id": self.id,
             "hash": self.Hash,
-            "guest_email": self.Guest_Email,
-            "created_at": self.Created_At,
+            "guest_email": self.guest_email,
+            "created_at": self.created_at,
             # do not serialize the password, its a security breach
         }
 class TokenPermission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     token_id = db.Column(db.Integer, db.ForeignKey('Token.id'))
     permission_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -100,8 +101,9 @@ class TokenPermission(db.Model):
 
     def serialize(self):
         return {
-            "Token_ID": self.Event_ID,
-            "Permission_ID": self.Permission_ID,
+            "id": self.id,
+            "token_ID": self.token_id,
+            "permission_id": self.permission_id,
             # do not serialize the password, its a security breach
         }
 class Permission(db.Model):

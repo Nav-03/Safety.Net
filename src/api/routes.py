@@ -10,18 +10,19 @@ from api.models import db, Token
 from api.models import db, TokenPermission
 from api.models import db, Permission
 from api.utils import generate_sitemap, APIException
+# from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+# @api.route('/hello', methods=['POST', 'GET'])
+# def handle_hello():
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
+#     response_body = {
+#         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+#     }
 
-    return jsonify(response_body), 200
+#     return jsonify(response_body), 200
 
 
 
@@ -35,50 +36,38 @@ def create_Coordinator():
 
 @api.route('/Event_Coordinator', methods=['GET'])
 def Event_Coordinator():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(Event_Coordinator)
-    db.session.commit()
-    return jsonify(Event_Coordinator)
-
+    Coordinator_id = request.json.get('Coordinator_Id', None) 
+    Event_id = request.json.get('Event_Id', None)
 
 @api.route('/Event', methods=['GET'])
 def Event():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(Event)
-    db.session.commit()
-    return jsonify(Event)
-
+    Event_Name = request.json.get('Event_Name', None)
+    Event_id = request.json.get('Event_Id', None)
    
 @api.route('/Room', methods=['GET'])
 def Room():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(Room)
-    db.session.commit()
-    return jsonify(Room)
+    Room_Name = request.json.get('Room_Name', None)
+    Event_id = request.json.get('Event_Id', None)
+    Permission_id = request.json.get('Permission_id', None)
 
 
-@api.route('/TokenPermission', methods=['POST'])
+@api.route('/TokenPermission', methods=['GET'])
 def TokenPermission():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(TokenPermission)
-    db.session.commit()
-    return jsonify(TokenPermission)    
+    Token_id = request.json.get('Token_id', None)
+    Permission_id = request.json.get('Permission_id', None)
 
-@api.route('/Permission', methods=['POST'])
+@api.route('/Permission', methods=['GET'])
 def Permission():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(Permission)
-    db.session.commit()
-    return jsonify(Permission)
+     Event_id = request.json.get('Event_Id', None)
 
 
 
-@api.route('/Token', methods=['GET'])
-def create_Coordinator():
-    Coordinator = Coordinator(email=email, password=password)
-    db.session.add(Token)
-    db.session.commit()
-    return jsonify(Token)
+# @api.route('/Token', methods=['GET'])
+# def create_Coordinator():
+#     Coordinator = Coordinator(email=email, password=password)
+#     db.session.add(Token)
+#     db.session.commit()
+#     return jsonify(Token)
 
 
 
@@ -89,8 +78,8 @@ def create_token():
         return jsonify({"msg":"Missing the payload"}), 400
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-    user = User.query.filter_by(email=email, password=password).first()
-    if user is None:
+    coordinator = Coordinator.query.filter_by(email=email, password=password).first()
+    if coordinator is None:
         return jsonify({"msg": "Missing email or password"}), 401
-    access_token = create_access_token(identity=user.id)
-    return jsonify({ "token": access_token, "user_id": user.id })
+    access_token = create_access_token(identity=coordinator.id)
+    return jsonify({ "token": access_token, "coordinator_id": coordinator.id })
