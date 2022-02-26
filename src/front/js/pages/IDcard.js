@@ -20,7 +20,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/IDcard.css";
-
+import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
 
 export const IDcard = () => {
     const { store, actions } = useContext(Context);
@@ -29,14 +29,13 @@ export const IDcard = () => {
         <div className="text-center mt-5">
 
             <div className="card">
-                {/* <img src={profileImg} alt="John" style="width:100%" /> */}
+                <img src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png" alt="John" style={{ width: "100 % " }} />
                 <h1>John Doe</h1>
                 <p className="title">CEO & Founder, Example</p>
                 <p>Harvard University</p>
-                <a href="#"><i className="fa fa-dribbble"></i></a>
-                <a href="#"><i className="fa fa-twitter"></i></a>
-                <a href="#"><i className="fa fa-linkedin"></i></a>
-                <a href="#"><i className="fa fa-facebook"></i></a>
+                <a href="#"><FaTwitter /></a>
+                <a href="#"><FaLinkedin /></a>
+                <a href="#"><FaFacebookF /></a>
                 <p><button>Contact</button></p>
             </div>
         </div>
