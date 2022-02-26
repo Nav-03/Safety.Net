@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Coordinator
 # from api.models import db, Event_Coordinator
 from api.models import db, Event
-from api.models import db, Room
+# from api.models import db, Room
 # from api.models import db, Token
 # from api.models import db, TokenPermission
 # from api.models import db, Permission
@@ -38,6 +38,14 @@ def create_coordinator():
 # def Event_Coordinator():
 #     Coordinator_id = request.json.get('Coordinator_Id', None) 
 #     Event_id = request.json.get('Event_Id', None)
+@api.route('/event', methods=['POST'])
+def event():
+    body = request.get_json()
+    event = Event()
+    event.event_name =body['Event_Name']
+    db.session.add(event)
+    db.session.commit()
+    return jsonify(event.serialize())
 
 @api.route('/event', methods=['GET'])
 def Event():
@@ -45,12 +53,12 @@ def Event():
     event_id = request.json.get('event_Id', None)
     return jsonify(event)
    
-@api.route('/room', methods=['GET'])
-def Room():
-    Room_Name = request.json.get('Room_Name', None)
-    Event_id = request.json.get('Event_Id', None)
-    Permission_id = request.json.get('Permission_id', None)
-    return jsonify(room)
+# @api.route('/room', methods=['GET'])
+# def Room():
+#     Room_Name = request.json.get('Room_Name', None)
+#     Event_id = request.json.get('Event_Id', None)
+#     Permission_id = request.json.get('Permission_id', None)
+#     return jsonify(room)
 
 # @api.route('/token_permission', methods=['GET'])
 # def TokenPermission():
