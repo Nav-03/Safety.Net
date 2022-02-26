@@ -3,7 +3,6 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Coordinator
-# from api.models import db, Event_Coordinator
 from api.models import db, Event
 # from api.models import db, Room
 # from api.models import db, Token
