@@ -90,6 +90,7 @@ class Permission(db.Model):
 class Room(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     room_name = db.Column(db.String(120), unique=True, nullable=False)
+    guest_email = db.Column(db.String(80), unique=False, nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     permission_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -101,6 +102,7 @@ class Room(db.Model):
         return {
             "id": self.id,
             "room_name": self.room_name,
+            "guest_email": self.guest_email,
             "event_id": self.event_id,
             "permission_id": self.permission_id,
             # do not serialize the password, its a security breach
