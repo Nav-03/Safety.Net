@@ -11,6 +11,7 @@ import { Main_event } from "./pages/main_event.js";
 import { IDcard } from "./pages/IDcard.js";
 import { AdminLogin } from "./pages/admin_login.js";
 import injectContext from "./store/appContext";
+import { Landing } from "./pages/landing_page.js";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -45,6 +46,9 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
+						<Route exact path="/landing_page">
+							<Landing />
+							</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
