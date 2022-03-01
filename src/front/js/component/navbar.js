@@ -13,7 +13,7 @@ export const Navbar = () => {
     <>
       <nav className="navbar">
         <Link to="/landing_page" className="navbar-logo">
-          NameOfTheApp/Logo
+          <h2>SecureEventApp-SEA</h2>
 
         </Link>
         <ul className="nav-items">
