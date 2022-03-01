@@ -25,7 +25,6 @@ class Coordinator(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "coordinator": list(map(lambda x: x.serialize(), self.coordinator)),
             "created_at": self.created_at,
             "updated_at": self.updated_at,
         }

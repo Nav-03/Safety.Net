@@ -33,10 +33,12 @@ def create_coordinator():
     return jsonify(coordinator.serialize())
 
 
-# @api.route('/event_coordinator', methods=['GET'])
-# def Event_Coordinator():
-#     Coordinator_id = request.json.get('Coordinator_Id', None) 
-#     Event_id = request.json.get('Event_Id', None)
+@api.route('/coordinator', methods=['GET'])
+def Event_Coordinator():
+    all_coordinators = Coordinator.query.all()
+    return jsonify([c.serialize() for c in all_coordinators])
+
+
 @api.route('/event', methods=['POST'])
 def event():
     body = request.get_json()

@@ -12,7 +12,7 @@ export const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-logo">
+        <Link to="/landing_page" className="navbar-logo">
           NameOfTheApp/Logo
 
         </Link>
