@@ -1,30 +1,34 @@
 {
-	"name": "react-hello-webapp",
+	"name": "secure-event",
 	"engines": {
 		"node": "16.x"
 	},
-	"version": "1.0.1",
-	"description": "",
+	"version": "1.0.0",
+	"description": "Reusable secure event app",
 	"main": "index.js",
 	"scripts": {
 		"start": "webpack-dev-server --config webpack.dev.js --port 3000",
 		"build": "webpack --config webpack.prod.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Nav Sky Rafael",
+		"url": "TBD"
 	},
 	"contributors": [
 		{
-			"name": "Alejandro Sanchez",
-			"url": "http://alesanchezr.com/"
+			"name": "Nav Gabrie",
+			"url": "http://github.com/xxxxxx"
 		},
 		{
-			"name": "Ignacio Cordoba",
-			"url": "http://github.com/nachovz"
+			"name": "Rafael Lovera",
+			"url": "http://github.com/xxxxxx"
+		},
+		{
+			"name": "Sky Dotel",
+			"url": "http://github.com/xxxxxx"
 		}
 	],
-	"license": "ISC",
+	"license": "FREE",
 	"devDependencies": {
 		"@babel/cli": "^7.16.0",
 		"@babel/core": "^7.16.0",
