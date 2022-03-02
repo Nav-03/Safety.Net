@@ -61,7 +61,7 @@ GuestPermission = db.Table('guest_association',
 class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Hash = db.Column(db.String(120), unique=True, nullable=False)
-    guest_email = db.Column(db.String(80), unique=False, nullable=False)
+    email = db.Column(db.String(80), unique=False, nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     permission = db.relationship("Permission",
                     secondary=GuestPermission)
@@ -77,7 +77,7 @@ class Guest(db.Model):
             "id": self.id,
             "hash": self.Hash,
             "event_id": self.event_id,
-            "guest_email": self.guest_email,
+            "email": self.email,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             # do not serialize the password, its a security breach

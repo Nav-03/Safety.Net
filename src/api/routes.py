@@ -4,9 +4,9 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Coordinator
 from api.models import db, Event
-# from api.models import db, Room
-# from api.models import db, Token
-# from api.models import db, TokenPermission
+from api.models import db, Guest
+from api.models import db, GuestPermission
+from api.models import db, Event_Coordinator
 # from api.models import db, Permission
 from api.utils import generate_sitemap, APIException
 # from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
@@ -39,6 +39,23 @@ def Event_Coordinator():
     return jsonify([c.serialize() for c in all_coordinators])
 
 
+
+
+
+@api.route('/guest', methods=['POST'])
+def create_guest():
+    guest = Guest(email=email,Hash=Hash,event_id=event_id )
+    db.session.add(guest)
+    db.session.commit()
+    return jsonify(guest.serialize())
+
+
+@api.route('/guest', methods=['GET'])
+def Guest():
+    all_guests = Guest.query.all()
+    return jsonify([g.serialize() for g in all_guests])
+
+
 @api.route('/event', methods=['POST'])
 def event():
     body = request.get_json()
@@ -61,7 +78,7 @@ def Event():
 #     Permission_id = request.json.get('Permission_id', None)
 #     return jsonify(room)
 
-# @api.route('/token_permission', methods=['GET'])
+# @api.route('/guest_permission', methods=['GET'])
 # def TokenPermission():
 #     Token_id = request.json.get('Token_id', None)
 #     Permission_id = request.json.get('Permission_id', None)
@@ -69,15 +86,6 @@ def Event():
 # @api.route('/permission', methods=['GET'])
 # def Permission():
 #      Event_id = request.json.get('Event_Id', None)
-
-
-
-# @api.route('/Token', methods=['GET'])
-# def create_Coordinator():
-#     Coordinator = Coordinator(email=email, password=password)
-#     db.session.add(Token)
-#     db.session.commit()
-#     return jsonify(Token)
 
 
 

@@ -15,6 +15,8 @@ def setup_admin(app):
     admin.add_view(ModelView(Event, db.session))
     admin.add_view(ModelView(Guest, db.session))
     admin.add_view(ModelView(Permission, db.session))
+    # admin.add_view(ModelView(GuestPermission, db.session))
+    # admin.add_view(ModelView(Event_Coordinator, db.session))
     
 
     # You can duplicate that line to add mew models
