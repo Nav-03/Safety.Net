@@ -2,45 +2,76 @@
   margin: 0;
   padding: 0;
 }
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@keyframes drop-in {
+  from {
+    transform: rotate(-30deg) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg) translateY(0%);
+    opacity: 1;
+  }
+}
 
+.box {
+  animation: drop-in 1000ms;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.25;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.box {
+  animation: slide-in 1000ms;
+  animation-iteration-count: 3;
+}
 body {
   margin: 0;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 17px;
-  color: #116b86;
+  color: #fff;
   line-height: 1.6;
 }
 
 #showcase {
-  /* background-image: url(../img/dark.jpg); */
-  /* background-size: cover; */
-  /* /* background-position: center; */
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* padding: 0 20px; */
+  padding: 0 20px;
 }
 
 #showcase h1 {
-  font-size: 50px;
+  animation: slide-in 3s;
+  font-size: 70px;
   line-height: 1.2;
+  font-family: "Dancing Script", cursive;
 }
 
 #showcase p {
-  font-size: 20px;
+  font-size: 30px;
+  font-family: "Dancing Script", cursive;
+  animation: slide-in 3s;
 }
 
 #showcase .button {
   font-size: 18px;
   text-decoration: none;
-  color: #0c84a1;
-  border: #0c84a1 1px solid;
+  color: #ffffff;
+  border: #fdfdfd 1px solid;
   padding: 10px 20px;
   border-radius: 10px;
   margin-top: 20px;
+  animation: drop-in 3s;
 }
 
 #showcase .button:hover {
@@ -79,7 +110,11 @@ body {
   background: #fff;
 } */
 
-.container {
-  background-size: cover;
-  background-position: center;
+#imagen {
+  /* background-size: cover;
+  background-position: center; */
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
 }

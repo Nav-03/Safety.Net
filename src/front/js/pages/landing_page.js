@@ -8,8 +8,8 @@ export const Landing = () => {
 
   return (
     <> 
-    <div id="container" styles={{ backgroundImage:`url(${dark})` }}>
-    </div>
+    
+          <img id="imagen" src={dark} alt=""></img>
       <header id="showcase">
         <h1>Welcome To [NameOftheApp]</h1>
         <p>
@@ -22,7 +22,7 @@ export const Landing = () => {
       </header>
         <body>
             
-      <section id="section-a">
+      {/* <section id="section-a">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit minus
           impedit maxime, quae soluta quis cumque perferendis! Doloribus
@@ -31,7 +31,7 @@ export const Landing = () => {
           accusamus expedita optio, voluptatem minus? In maiores omnis aperiam
         
         </p>
-      </section>
+      </section> */}
       </body>
     </>
   );
