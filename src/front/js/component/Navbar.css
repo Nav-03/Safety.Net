@@ -1,9 +1,11 @@
 .navbar {
     height: 10vh;
-    background: #1b1919;
+    background-color: rgba(0,0,0,.2);
+    background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   
   .navbar-logo {
