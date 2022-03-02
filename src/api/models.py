@@ -68,7 +68,7 @@ class Guest(db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-
+    
     def __repr__(self):
         return f'Guest : {self.id}'
 

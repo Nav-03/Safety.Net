@@ -34,7 +34,7 @@ def create_coordinator():
 
 
 @api.route('/coordinator', methods=['GET'])
-def Event_Coordinator():
+def coordinator():
     all_coordinators = Coordinator.query.all()
     return jsonify([c.serialize() for c in all_coordinators])
 
@@ -51,13 +51,34 @@ def create_guest():
 
 
 @api.route('/guest', methods=['GET'])
-def Guest():
+def guest():
     all_guests = Guest.query.all()
     return jsonify([g.serialize() for g in all_guests])
 
 
+
+@api.route('/guest', methods=['PUT'])
+def edit_guest():
+    guest = Guest.query.get(guest.id)
+    if guest is None:
+        raise APIException('User not found', status_code=404)
+    if "guest" in body:
+        guest.username = body["guest"]
+    if "email" in body:
+        guest.email = body["email"]
+    db.session.commit()
+    return jsonify(guest.serialize())
+
+# @api.route('/guest', methods=['DELETE'])
+# def delete_guest():
+#         guest = Guest.query.get(guest.id)
+#         if guest is None:
+#             raise APIException('User not found', status_code=404)
+# db.session.delete(guest)
+# db.session.commit()
+
 @api.route('/event', methods=['POST'])
-def event():
+def create_event():
     body = request.get_json()
     event = Event()
     event.event_name =body['Event_Name']
@@ -66,28 +87,36 @@ def event():
     return jsonify(event.serialize())
 
 @api.route('/event', methods=['GET'])
-def Event():
+def event():
     event_name = request.json.get('event_name', None)
     event_id = request.json.get('event_Id', None)
     return jsonify(event)
    
-# @api.route('/room', methods=['GET'])
-# def Room():
-#     Room_Name = request.json.get('Room_Name', None)
-#     Event_id = request.json.get('Event_Id', None)
-#     Permission_id = request.json.get('Permission_id', None)
-#     return jsonify(room)
 
-# @api.route('/guest_permission', methods=['GET'])
-# def TokenPermission():
-#     Token_id = request.json.get('Token_id', None)
-#     Permission_id = request.json.get('Permission_id', None)
-
-# @api.route('/permission', methods=['GET'])
-# def Permission():
-#      Event_id = request.json.get('Event_Id', None)
+@api.route('/permission', methods=['POST'])
+def create_permission():
+    permission = Permission(name = name , event_id = event_id , guest = guest )
+    db.session.add(permission)
+    db.session.commit()
+    return jsonify(permission.serialize())
 
 
+
+@api.route('/permission', methods=['GET'])
+def permission():
+    name = request.json.get('name', None)
+    event_id = request.json.get('event_Id', None)
+    guest = request.json.get('guest', None)
+    return jsonify(permission)
+   
+
+@api.route('/permission', methods=['DELETE'])
+def delete_permission():
+    permission = Permission.query.get(permission.id)
+    if permission is None:
+        raise APIException('Permission not found', status_code=404)
+db.session.delete(permission)
+db.session.commit()
 
 
 @api.route('/token', methods=['POST'])
