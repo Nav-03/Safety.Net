@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
@@ -12,6 +12,9 @@ import { IDcard } from "./pages/IDcard.js";
 import { AdminLogin } from "./pages/admin_login.js";
 import injectContext from "./store/appContext";
 import { Landing } from "./pages/landing_page.js";
+import {Notfound} from "./pages/notfoundpage.js";
+import {Contactus} from "./pages/contactus.js";
+import {About} from "./pages/about.js";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -29,8 +32,8 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/">
-							<Home />
+					<Route exact path="/">
+						<Redirect to="/landing_page" />
 						</Route>
 						<Route exact path="/coordinator">
 							<Coordinator />
@@ -53,8 +56,14 @@ const Layout = () => {
 						<Route exact path="/landing_page">
 							<Landing />
 							</Route>
+						<Route exact path="/contact_us">
+							<Contactus />
+							</Route>
+						<Route exact path="/about">
+							<About />
+							</Route>
 						<Route>
-							<h1>Not found!</h1>
+							<Notfound />
 						</Route>
 					</Switch>
 					<Footer />
