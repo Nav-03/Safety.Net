@@ -16,13 +16,13 @@ export const navItems = [
   {
     id: 3,
     title: "About [AppName]",
-    path: "./footer",
+    path: "./about",
     cName: "nav-item",
   },
   {
     id: 4,
     title: "Contact Us",
-    path: "./",
+    path: "./contact_us",
     cName: "nav-item",
   },
 ];
