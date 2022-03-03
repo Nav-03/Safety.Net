@@ -35,9 +35,10 @@ export const AdminLogin = () => {
                         <div className="row">
                             <form onSubmit={e => {
                                 e.preventDefault();
-                                actions.createNewSession(email, password)
-                                    .then((payload) => {
-                                        alert(payload.msg);
+                                actions
+                                    .createNewSession(email, password)
+                                    .then((session) => {
+                                        history.push("/coordinator");
                                     })
                             }}
                                 control="" className="form-group">
@@ -57,7 +58,7 @@ export const AdminLogin = () => {
                                     <label for="remember_me">Remember Me!</label>
                                 </div>
                                 <div className="row">
-                                    <input onClick={handleOnClick} type="submit" value="Submit" className="aBtn" />
+                                    <input type="submit" value="Submit" className="aBtn" />
                                 </div>
                             </form>
                         </div>
