@@ -4,7 +4,7 @@ export const navItems = [
   {
     id: 1,
     title: "Home",
-    path: "./",
+    path: "./landing_page",
     cName: "nav-item",
   },
   {
@@ -16,7 +16,7 @@ export const navItems = [
   {
     id: 3,
     title: "About [AppName]",
-    path: "./",
+    path: "./footer",
     cName: "nav-item",
   },
   {
@@ -43,7 +43,7 @@ export const serviceDropdown = [
   {
     id: 3,
     title: "Admin Login",
-    path: "./",
+    path: "./admin_login",
     cName: "submenu-item",
   }
 ];

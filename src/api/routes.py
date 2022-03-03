@@ -7,21 +7,12 @@ from api.models import db, Event
 from api.models import db, Guest
 from api.models import db, GuestPermission
 from api.models import db, Event_Coordinator
-# from api.models import db, Permission
+from api.models import db, Permission
 from api.utils import generate_sitemap, APIException
-# from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
 api = Blueprint('api', __name__)
 
-
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
-
-    return jsonify(response_body), 200
 
 
 
@@ -110,13 +101,13 @@ def permission():
     return jsonify(permission)
    
 
-@api.route('/permission', methods=['DELETE'])
-def delete_permission():
-    permission = Permission.query.get(permission.id)
-    if permission is None:
-        raise APIException('Permission not found', status_code=404)
-db.session.delete(permission)
-db.session.commit()
+# @api.route('/permission', methods=['DELETE'])
+# def delete_permission():
+#     permission = Permission.query.get(permission.id)
+#     if permission is None:
+#         raise APIException('Permission not found', status_code=404)
+# db.session.delete(permission)
+# db.session.commit()
 
 
 @api.route('/token', methods=['POST'])

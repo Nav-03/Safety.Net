@@ -2,18 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			demo: [],
+			coordinator: [],
+			Event: [],
+			Guest: [],
+			Permission: []
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -41,6 +35,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			getCurrentSession: () => {
+				const session = JSON.parse(localStorage.getItem("session"));
+				return session;
+
+			},
+			createNewSession: async (email, password) => {
+				const options = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ email: email, password: password }),
+				};
+				const response = await fetch(
+					process.env.BACKEND_URL + `/api/token`,
+					options
+				);
+				if (response.status === 200) {
+					const payload = await response.json();
+					localStorage.setItem("session", JSON.stringify(payload));
+					setStore({ session: payload });
+					return payload; //this is gonna make the promise resolve
+					// return jsonify({ "token": access_token, "user_id": user.id })
+				} else {
+					return await response.json()
+				};
+
+
 			}
 		}
 	};

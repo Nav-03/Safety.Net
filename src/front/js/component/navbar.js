@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useCallback } from "react";
+import { Link, useHistory } from "react-router-dom";
 import * as Icons from "react-icons/fa";
 import "./Navbar.css";
 import { navItems } from "./NavItems";
@@ -8,6 +8,9 @@ import Dropdown from "./Dropdown";
 
 export const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
+  const history = useHistory();
+  const handleOnClick = useCallback(() => history.push('/admin_login'), [history]);
+
 
   return (
     <>
@@ -29,11 +32,13 @@ export const Navbar = () => {
                   <Link to={item.path}>{item.title}</Link>
                   {dropdown && <Dropdown />}
                 </li>
+
               );
             }
             return (
               <li key={item.id} className={item.cName}>
-                <Link to={item.path}>{item.title}</Link>
+                <Link onClick={handleOnClick} to={item.path}>{item.title}</Link>
+
               </li>
             );
           })}

@@ -6,12 +6,18 @@
 
 
 
-import React, { useContext } from "react";
+import React, { useContext, useState, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
 export const AdminLogin = () => {
+    const history = useHistory();
+    const handleOnClick = useCallback(() => history.push('/coordinator'), [history]);
 
+    const { store, actions } = useContext(Context);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     return (
 
@@ -27,20 +33,31 @@ export const AdminLogin = () => {
                             <h2>Log In</h2>
                         </div>
                         <div className="row">
-                            <form control="" className="form-group">
+                            <form onSubmit={e => {
+                                e.preventDefault();
+                                actions.createNewSession(email, password)
+                                    .then((payload) => {
+                                        alert(payload.msg);
+                                    })
+                            }}
+                                control="" className="form-group">
                                 <div className="row">
-                                    <input type="text" name="username" id="username" className="form__input" placeholder="Username" />
+                                    <input required value={email} onChange={e => {
+                                        setEmail(e.target.value)
+                                    }} type="email" name="email" id="email" className="form__input" placeholder="Email" />
                                 </div>
                                 <div className="row">
 
-                                    <input type="password" name="password" id="password" className="form__input" placeholder="Password" />
+                                    <input required value={password} onChange={e => {
+                                        setPassword(e.target.value)
+                                    }} type="password" name="password" id="password" className="form__input" placeholder="Password" />
                                 </div>
                                 <div className="row">
                                     <input type="checkbox" name="remember_me" id="remember_me" className="" />
                                     <label for="remember_me">Remember Me!</label>
                                 </div>
                                 <div className="row">
-                                    <input type="submit" value="Submit" className="aBtn" />
+                                    <input onClick={handleOnClick} type="submit" value="Submit" className="aBtn" />
                                 </div>
                             </form>
                         </div>
