@@ -31,13 +31,13 @@ export const serviceDropdown = [
   {
     id: 1,
     title: "Sign up for an event",
-    path: "./",
+    path: "./registration",
     cName: "submenu-item"
   },
   {
     id: 2,
     title: "Event Details",
-    path: "./",
+    path: "./event_details",
     cName: "submenu-item",
   },
   {
@@ -46,4 +46,5 @@ export const serviceDropdown = [
     path: "./admin_login",
     cName: "submenu-item",
   }
+  
 ];
