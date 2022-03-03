@@ -15,6 +15,7 @@ import { Landing } from "./pages/landing_page.js";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Registration } from "./pages/registration";
 
 //create your first component
 const Layout = () => {
@@ -42,6 +43,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/admin_login">
 							<AdminLogin />
+						</Route>
+						<Route exact path="/registration">
+							<Registration />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
