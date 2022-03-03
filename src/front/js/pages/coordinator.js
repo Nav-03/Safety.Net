@@ -10,8 +10,9 @@
 
 
 
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
 import "../../styles/coordinator.css";
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -21,6 +22,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 export const Coordinator = () => {
     const { store, actions } = useContext(Context);
+    const history = useHistory();
+    const handleOnClick = useCallback(() => history.push('/IDcard'), [history]);
+
 
     return (
         // < !--Editable table-- >
@@ -54,7 +58,7 @@ export const Coordinator = () => {
                                     <span className="table-details">
 
 
-                                        <button type="button" className="btn btn-primary btn-rounded btn-sm my-0">
+                                        <button onClick={handleOnClick} type="button" className="btn btn-primary btn-rounded btn-sm my-0">
                                             Details
                                         </button></span>
 
