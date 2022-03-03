@@ -4,8 +4,8 @@ import "./Button.css";
 
 function Button() {
   return (
-    <Link to="/sign_up">
-      <button className="btn">Sign Up</button>
+    <Link to="/user_login">
+      <button className="btn">Login</button>
       {/* <button className="btn d-flex">Login</button> */}
     </Link>
   );
