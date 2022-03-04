@@ -25,9 +25,13 @@ def create_coordinator():
 
 
 @api.route('/coordinator', methods=['GET'])
+@jwt_required()
 def coordinator():
-    all_coordinators = Coordinator.query.all()
-    return jsonify([c.serialize() for c in all_coordinators])
+    current_coordinator_id = get_jwt_identity()
+    coordinator = Coordinator.query.get(current_coordinator_id)
+    # all_coordinators = Coordinator.query.all()
+    # return jsonify([c.serialize() for c in all_coordinators])
+    return jsonify({"id": coordinator.id, "email": coordinator.email }), 200
 
 
 

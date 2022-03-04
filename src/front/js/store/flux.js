@@ -43,6 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			createNewSession: async (email, password) => {
+
 				const options = {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -52,9 +53,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					process.env.BACKEND_URL + `/api/token`,
 					options
 				);
+				if (!response.ok) throw Error("There was a problem in the login request")
+				if (response.status === 401) {
+					throw ("Invalid credentials")
+				}
+				else if (response.status === 400) {
+					throw ("Invalid email or password format")
+				}
 				if (response.status === 200) {
 					const payload = await response.json();
-					localStorage.setItem("session", JSON.stringify(payload));
+					localStorage.setItem("session", payload.token);
 					setStore({ session: payload });
 					return payload; //this is gonna make the promise resolve
 					// return jsonify({ "token": access_token, "user_id": user.id })
