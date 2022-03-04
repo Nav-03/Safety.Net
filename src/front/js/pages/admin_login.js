@@ -29,7 +29,7 @@ export const AdminLogin = () => {
                 </div>
                 <div className="col-md-8 col-xs-12 col-sm-12 login_form ">
                     <div className="container-fluid">
-                        <div className="row ">
+                        <div className="login ">
                             <h2>Log In</h2>
                         </div>
                         <div className="row">
@@ -53,17 +53,14 @@ export const AdminLogin = () => {
                                         setPassword(e.target.value)
                                     }} type="password" name="password" id="password" className="form__input" placeholder="Password" />
                                 </div>
-                                <div className="row">
+                                <div className="d-flex justify-content-around align-items-center">
                                     <input type="checkbox" name="remember_me" id="remember_me" className="" />
-                                    <label for="remember_me">Remember Me!</label>
+                                    <label className="label" for="remember_me">Remember Me!</label>
                                 </div>
                                 <div className="row">
                                     <input type="submit" value="Submit" className="aBtn" />
                                 </div>
                             </form>
-                        </div>
-                        <div className="row ">
-                            <p>Don't have an account? <a href="#">Register Here</a></p>
                         </div>
                     </div>
                 </div>

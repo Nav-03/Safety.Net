@@ -71,11 +71,18 @@ form {
   font-weight: 600;
   background-color: #fff;
   border: 1px solid #008080;
-  margin-top: 1.5em;
-  margin-bottom: 1em;
+  margin-top: 2em;
+  margin-bottom: 2.5em;
 }
 .aBtn:hover,
 .aBtn:focus {
   background-color: #008080;
   color: #fff;
+}
+.label {
+  color: rgb(95, 94, 94);
+}
+.login {
+  margin-top: 1em;
+  color: #008080;
 }
