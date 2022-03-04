@@ -6,23 +6,24 @@ import "../../styles/landingpage.css";
 export const Landing = () => {
   const { store, actions } = useContext(Context);
 
+
   return (
-    <> 
-    
-          <img id="imagen" src={dark} alt=""></img>
+    <>
+
+      <img id="imagen" src={dark} alt=""></img>
       <header id="showcase">
         <h1>Welcome To [NameOftheApp]</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
           officiis ipsum officia numquam expedita ullam.
         </p>
-        <a href="#" class="button">
+        <a href="/main_event " class="button">
           Read More
         </a>
       </header>
-        <body>
-            
-      {/* <section id="section-a">
+      <body>
+
+        {/* <section id="section-a">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit minus
           impedit maxime, quae soluta quis cumque perferendis! Doloribus
