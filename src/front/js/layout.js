@@ -16,7 +16,6 @@ import { Notfound } from "./pages/notfoundpage.js";
 import { Contactus } from "./pages/contactus.js";
 import { About } from "./pages/about.js";
 import { Eventdetails } from "./pages/main_event.js";
-import { Userlogin } from "./pages/user_login.js";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -69,9 +68,6 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/event_details">
 							<Eventdetails />
-						</Route>
-						<Route exact path="/user_login">
-							<Userlogin />
 						</Route>
 						<Route>
 							<Notfound />

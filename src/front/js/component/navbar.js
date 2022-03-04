@@ -37,7 +37,7 @@ export const Navbar = () => {
             }
             return (
               <li key={item.id} className={item.cName}>
-                <Link onClick={handleOnClick} to={item.path}>{item.title}</Link>
+                <Link onChange={handleOnClick} to={item.path}>{item.title}</Link>
 
               </li>
             );
