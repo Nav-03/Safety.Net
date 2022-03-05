@@ -1,7 +1,8 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+import os
+from flask import Flask, request, jsonify, url_for, Blueprint, redirect
 from api.models import db, Coordinator
 from api.models import db, Event
 from api.models import db, Guest
@@ -35,11 +36,35 @@ def coordinator():
 
 
 
+@api.route('/redirect', methods=['GET'])
+@jwt_required()
+def redirect_qr_scan():
+    
+    user_id = get_jwt_identity()
+    coordinator = Coordinator.query.filter_by(id=user_id).first()
+    guest = Guest.query.filter_by(id=user_id).first()
+    if guest is not None:
+        return redirect(os.getenv("FRONTEND_URL", "")+ f"/guest_scan?token={request.args.get('token')}", code=302)
+    if coordinator is not None:
+        return redirect(os.getenv("FRONTEND_URL","")+ f"/coordinator_scan?token={request.args.get('token')}", code=302)
+    
+    return (f"I have no idea who you are {user_id}")
+
+
+
 
 
 @api.route('/guest', methods=['POST'])
 def create_guest():
-    guest = Guest(email=email,Hash=Hash,event_id=event_id )
+    if request.json is None:
+        return jsonify({"msg":"Missing the payload"}), 400
+    email = request.json.get('email', None)
+    event_id = request.json.get('event_id', None)
+    guest = Guest(email=email,event_id=event_id) 
+    db.session.add(guest)
+    db.session.commit()
+    access_token = create_access_token(identity=guest.id)
+    guest.guest_hash = access_token
     db.session.add(guest)
     db.session.commit()
     return jsonify(guest.serialize())
