@@ -60,7 +60,7 @@ GuestPermission = db.Table('guest_association',
 
 class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    Hash = db.Column(db.String(120), unique=True, nullable=False)
+    guest_hash = db.Column(db.String(500), unique=True, nullable=True)
     email = db.Column(db.String(80), unique=False, nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     permission = db.relationship("Permission",
@@ -75,7 +75,7 @@ class Guest(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "hash": self.Hash,
+            "guest_hash": self.guest_hash,
             "event_id": self.event_id,
             "email": self.email,
             "created_at": self.created_at,
