@@ -15,20 +15,27 @@ export const Registration = () => {
         <h2>Registration</h2>
         <form action="#">
         <div className="input-box">
-            <input type="text" placeholder="Enter your name" required/>
+            <input type="text" placeholder="Enter your First and Last Name" required/>
         </div>
         <div className="input-box">
             <input type="text" placeholder="Enter your email" required/>
-        </div>
+        {/* </div>
         <div className="input-box">
             <input type="password" placeholder="Create password" required/>
         </div>
         <div className="input-box">
-            <input type="password" placeholder="Confirm password" required/>
+            <input type="password" placeholder="Confirm password" required/> */}
         </div>
         <div className="policy">
             <input type="checkbox"/>
-            <h3>I accept all terms and condition</h3>
+            <h3>VIP</h3>
+            <input type="checkbox"/>
+            <h3>Valet</h3>
+            <input type="checkbox"/>
+            <h3>Unlimited Drinks</h3>
+            <input type="checkbox"/>
+            <h3>Dinner</h3>
+            
         </div>
         <div className="input-box button">
             <input type="Submit" value="Register Now"/>
