@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useState, useCallback } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import dark from "../../img/dark.jpg";
 import "../../styles/eventdetails.css";
@@ -7,73 +8,76 @@ import event2 from "../../img/event-photo-02.jpg";
 
 
 export const Eventdetails = () => {
+  const history = useHistory();
+  const handleOnClick = useCallback(() => history.push('/registration'), [history]);
   return (
     <>
     <img id="imagen" src={dark} alt=""></img>
+    <div id="header">Upcoming Events...</div>
     <div id="bigbox">
-      <div class="card">
-      <div class="card-image"></div>
-      <div class="card-text">
-        <span class="date">4 days ago</span>
-        <h2>Post One</h2>
+      <div  onClick={handleOnClick} className="card">
+      <div className="card-image"></div>
+      <div className="card-text">
+        <span className="date">03/25/2022</span>
+        <h2>NFTs Party</h2>
         <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
       </div>
-      <div class="card-stats">
-        <div class="stat">
-          <div class="value">4<sup>m</sup></div>
-          <div class="type">read</div>
+      <div className="card-stats">
+        <div className="stat">
+          <div className="value"><sup>Click for</sup></div>
+          <div className="type">Register</div>
         </div>
-        <div class="stat border">
-          <div class="value">5123</div>
-          <div class="type">views</div>
+        <div className="stat border">
+          <div className="value">5123</div>
+          <div className="type">views</div>
         </div>
-        <div class="stat">
-          <div class="value">32</div>
-          <div class="type">comments</div>
+        <div className="stat">
+          <div className="value">32</div>
+          <div className="type">comments</div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-image card2"></div>
-      <div class="card-text card2">
-        <span class="date">1 week ago</span>
-        <h2>Post Two</h2>
+    <div className="card">
+      <div className="card-image card2"></div>
+      <div className="card-text card2">
+        <span className="date">04/10/2022</span>
+        <h2>Cryptocurrency Event</h2>
         <p>Adipisicing elit. Ducimus, repudiandae corrupti amet temporibus omnis provident illum maxime quod. Lorem ipsum dolor</p>
       </div>
-      <div class="card-stats card2">
-        <div class="stat">
-          <div class="value">7<sup>m</sup></div>
-          <div class="type">read</div>
+      <div className="card-stats card2">
+        <div className="stat">
+          <div className="value"><sup>Click to</sup></div>
+          <div className="type">Register</div>
         </div>
-        <div class="stat border">
-          <div class="value">7152</div>
-          <div class="type">views</div>
+        <div className="stat border">
+          <div className="value">7152</div>
+          <div className="type">views</div>
         </div>
-        <div class="stat">
-          <div class="value">21</div>
-          <div class="type">comments</div>
+        <div className="stat">
+          <div className="value">21</div>
+          <div className="type">comments</div>
         </div>
       </div>
     </div>
-    <div class="card">
-        <div class="card-image card3"></div>
-        <div class="card-text card3">
-          <span class="date">3 week ago</span>
-          <h2>Post Three</h2>
+    <div className="card">
+        <div className="card-image card3"></div>
+        <div className="card-text card3">
+          <span className="date">04/21/2022</span>
+          <h2>4geeks Event</h2>
           <p>Repudiandae corrupti amet temporibus omnis provident illum maxime. Ducimus, lorem ipsum dolor adipisicing elit</p>
         </div>
-        <div class="card-stats card3">
-          <div class="stat">
-            <div class="value">5<sup>m</sup></div>
-            <div class="type">read</div>
+        <div className="card-stats card3">
+          <div className="stat">
+            <div className="value"><sup>Click for</sup></div>
+            <div className="type">Register</div>
           </div>
-          <div class="stat border">
-            <div class="value">3021</div>
-            <div class="type">views</div>
+          <div className="stat border">
+            <div className="value">3021</div>
+            <div className="type">views</div>
           </div>
-          <div class="stat">
-            <div class="value">15</div>
-            <div class="type">comments</div>
+          <div className="stat">
+            <div className="value">15</div>
+            <div className="type">comments</div>
           </div>
         </div>
       </div>

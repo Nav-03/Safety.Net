@@ -1,11 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.scale-up-center {
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
 #bigbox {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   /* background:url(""); */
   overflow: hidden;
+  animation: scale-up-center 1s;
+}
+#header {
+  font-size: 100px;
+  font-family: "Dancing Script", cursive;
+  justify-content: center;
+  display: flex;
+  animation: scale-up-center 1s;
 }
 .card {
   display: grid;
@@ -18,7 +38,7 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   font-family: roboto;
   text-align: center;
-
+  
   transition: 0.5s ease;
   cursor: pointer;
   margin: 30px;
@@ -29,7 +49,7 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-size: cover;
-  z-index: -2;
+  z-index: +5;
 }
 
 .card-text {
