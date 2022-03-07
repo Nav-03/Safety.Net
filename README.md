@@ -20,7 +20,7 @@ Each ticket :
 
     - can be scanned to gain access, verify access and has separate access to administrators from any device
 
-    	able to scan QR codes.
+    able to scan QR codes.
 
 The main reason for this platform is to be able to hold all parties accountable while attending event.
 should a disaster happen during an event, having a list of all those who where actively attending could be invaluable.
