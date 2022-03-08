@@ -71,7 +71,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 
-			}
+			},
+			addGuest: async (name, email) => {
+				const options = {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						name: name,
+						email: email,
+
+					})
+				}
+				const response = await fetch(process.env.BACKEND_URL + `/api/guest`);
+				if (response.status === 200) {
+					const payload = await response.json();
+					console.log('guest created successfully!');
+					return payload;
+				}
+			},
 		}
 	};
 };
