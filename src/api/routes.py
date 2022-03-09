@@ -56,6 +56,7 @@ def redirect_qr_scan():
 
 @api.route('/guest', methods=['POST'])
 def create_guest():
+    guests = request.get_json()
     if request.json is None:
         return jsonify({"msg":"Missing the payload"}), 400
     email = request.json.get('email', None)
@@ -73,13 +74,15 @@ def create_guest():
 
 @api.route('/guest', methods=['GET'])
 def guest():
-    all_guests = Guest.query.all()
-    return jsonify([g.serialize() for g in all_guests]), 200
+    guests = Guest.query.all()
+    all_guests = list(map(lambda x:x.serialize(),guests))
+    return jsonify(all_guests), 200
 
 
 
-@api.route('/guest', methods=['PUT'])
-def edit_guest():
+@api.route('/guest/<int:guest_id>', methods=['PUT'])
+def edit_guest(guest_id):
+    guests = request.get_json()
     guest = Guest.query.get(guest.id)
     if guest is None:
         raise APIException('Guest not found', status_code=404)
