@@ -82,7 +82,6 @@ def guest():
 
 @api.route('/guest/<int:guest_id>', methods=['PUT'])
 def edit_guest(guest_id):
-    guests = request.get_json()
     guest = Guest.query.get(guest.id)
     if guest is None:
         raise APIException('Guest not found', status_code=404)
