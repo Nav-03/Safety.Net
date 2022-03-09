@@ -59,8 +59,9 @@ def create_guest():
     if request.json is None:
         return jsonify({"msg":"Missing the payload"}), 400
     email = request.json.get('email', None)
+    name = request.json.get('name', None)
     event_id = request.json.get('event_id', None)
-    guest = Guest(email=email,event_id=event_id) 
+    guest = Guest(name=name,email=email,event_id=event_id) 
     db.session.add(guest)
     db.session.commit()
     access_token = create_access_token(identity=guest.id)
