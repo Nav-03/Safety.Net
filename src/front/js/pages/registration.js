@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 import Secure_Event from "../../img/Secure_Event.png";
 import "../../styles/registration.css";
 import dark from "../../img/dark.jpg";
@@ -23,12 +24,12 @@ export const Registration = (props) => {
                         e.preventDefault();
                     }} action="#">
                         <div className="input-box">
-                            <input onChange={(e) => setFormData({ formData, name: e.target.value })}
+                            <input onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 value={formData.name}
                                 type="text" placeholder="Enter your First and Last Name" required />
                         </div>
                         <div className="input-box">
-                            <input onChange={(e) => setFormData({ formData, email: e.target.value })}
+                            <input onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 value={formData.email} type="text" placeholder="Enter your email" required />
                             {/* </div>
         <div className="input-box">

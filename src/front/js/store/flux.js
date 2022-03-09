@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.status === 200) {
 					const payload = await response.json();
 					const myGuestList = payload.map((guest, i) => {
-						(guest.email = "/guest/");
+						(guest.email = "/guest");
 						guest.uid = i;
 						return guest;
 					});
