@@ -23,12 +23,12 @@ export const Registration = (props) => {
                         e.preventDefault();
                     }} action="#">
                         <div className="input-box">
-                            <input onSubmit={(e) => setFormData({ formData, name: e.target.value })}
+                            <input onChange={(e) => setFormData({ formData, name: e.target.value })}
                                 value={formData.name}
                                 type="text" placeholder="Enter your First and Last Name" required />
                         </div>
                         <div className="input-box">
-                            <input onSubmit={(e) => setFormData({ formData, email: e.target.value })}
+                            <input onChange={(e) => setFormData({ formData, email: e.target.value })}
                                 value={formData.email} type="text" placeholder="Enter your email" required />
                             {/* </div>
         <div className="input-box">

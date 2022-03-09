@@ -89,6 +89,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return payload;
 				}
 			},
+			loadGuests: async () => {
+				const response = await fetch(
+					process.env.BACKEND_URL + `/api/guest`
+				);
+				if (response.status === 200) {
+					const payload = await response.json();
+					const myGuestList = payload.map((guest, i) => {
+						(guest.email = "/guest/");
+						guest.uid = i;
+						return guest;
+					});
+					setStore({ guest: myGuestList });
+					console.log(myGuestList);
+				}
+			},
 		}
 	};
 };
