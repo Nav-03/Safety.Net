@@ -60,7 +60,6 @@ GuestPermission = db.Table('guest_association',
 
 class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    guest_hash = db.Column(db.String(500), unique=True, nullable=True)
     email = db.Column(db.String(80), nullable=False)
     name = db.Column(db.String(80), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
@@ -68,6 +67,7 @@ class Guest(db.Model):
                     secondary=GuestPermission)
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
+    guest_hash = db.Column(db.String(500), unique=True, nullable=True)
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     
     def __repr__(self):

@@ -74,7 +74,7 @@ def create_guest():
 @api.route('/guest', methods=['GET'])
 def guest():
     all_guests = Guest.query.all()
-    return jsonify([g.serialize() for g in all_guests])
+    return jsonify([g.serialize() for g in all_guests]), 200
 
 
 
@@ -82,9 +82,9 @@ def guest():
 def edit_guest():
     guest = Guest.query.get(guest.id)
     if guest is None:
-        raise APIException('User not found', status_code=404)
-    if "guest" in body:
-        guest.username = body["guest"]
+        raise APIException('Guest not found', status_code=404)
+    if "name" in body:
+        guest.name = body["name"]
     if "email" in body:
         guest.email = body["email"]
     db.session.commit()

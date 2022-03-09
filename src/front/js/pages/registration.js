@@ -50,7 +50,7 @@ export const Registration = (props) => {
 
                         </div>
                         <div className="input-box button">
-                            <input onSubmit={setFormData} type="Submit" value="Register Now" />
+                            <input type="Submit" value="Register Now" />
                         </div>
                         <div className="text">
                             {/* <h3>Already have an account? <a href="#">Login now</a></h3> */}
