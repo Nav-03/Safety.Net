@@ -12,7 +12,8 @@
 
 import React, { useContext, useCallback } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
+import { useHistory, useParams } from "react-router-dom";
 import "../../styles/coordinator.css";
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -22,6 +23,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 export const Coordinator = () => {
     const { store, actions } = useContext(Context);
+    const params = useParams();
     const history = useHistory();
     const handleOnClick = useCallback(() => history.push('/IDcard'), [history]);
 
@@ -50,8 +52,8 @@ export const Coordinator = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="pt-3-half" contentEditable="true">Aurelia Vega</td>
-                                <td className="pt-3-half" contentEditable="true">AVega@email.com</td>
+                                <td className="pt-3-half" contentEditable="true">{store.guestlist}</td>
+                                <td className="pt-3-half" contentEditable="true">{store.email}</td>
                                 <td className="pt-3-half" contentEditable="false">VIP</td>
                                 <td className="pt-3-half">
                                     {/* details button will link to members ID card */}
@@ -78,4 +80,11 @@ export const Coordinator = () => {
             </div>
         </div>
     );
+
+};
+
+Coordinator.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
 };

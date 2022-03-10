@@ -17,7 +17,7 @@ export const Landing = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
           officiis ipsum officia numquam expedita ullam.
         </p>
-        <a href="/main_event " class="button">
+        <a href="/main_event " className="button">
           Read More
         </a>
       </header>
