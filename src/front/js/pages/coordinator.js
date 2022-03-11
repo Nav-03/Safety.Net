@@ -52,8 +52,8 @@ export const Coordinator = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="pt-3-half" contentEditable="true">{store.guestlist}</td>
-                                <td className="pt-3-half" contentEditable="true">{store.email}</td>
+                                <td className="pt-3-half" contentEditable="true">{guest.name}</td>
+                                <td className="pt-3-half" contentEditable="true">{guest.email}</td>
                                 <td className="pt-3-half" contentEditable="false">VIP</td>
                                 <td className="pt-3-half">
                                     {/* details button will link to members ID card */}

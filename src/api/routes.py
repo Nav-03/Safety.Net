@@ -93,6 +93,10 @@ def guest():
     all_guests = list(map(lambda x:x.serialize(),guests))
     return jsonify(all_guests), 200
 
+# @api.route('/guest/<int:guest_id>', methods=['GET'])
+# def getGuest():
+#     guest = Guest.query.get(guest.id)
+#     return jsonify(guest), 200
 
 
 @api.route('/guest/<int:guest_id>', methods=['PUT'])
