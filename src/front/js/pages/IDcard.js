@@ -16,52 +16,28 @@
 
 
 
-
-import React, { useState, useCallback } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import dark from "../../img/dark.jpg";
-import "../../styles/eventdetails.css";
-import event1 from "../../img/event-photo-01.jpg";
-import event2 from "../../img/event-photo-02.jpg";
-import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
-
+import rigoImageUrl from "../../img/rigo-baby.jpg";
+import "../../styles/IDcard.css";
+import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
 
 export const IDcard = () => {
-  const history = useHistory();
-  const handleOnClick = useCallback(() => history.push('/registration'), [history]);
-  return (
-    <>
-    <img id="imagen" src={dark} alt=""></img>
-    <div id="header">Your Profile</div>
-    <div id="bigbox">
-      <div  onClick={handleOnClick} className="card">
-      
-    <div className="card">
-        <div className="card-image card2"></div>
-        <div className="card-text card2">
-          <span className="date">Attending: 04/21/2022</span>
-          <h2>First Last</h2>
-          <h2>Email</h2>
-          <p>QR endpoints</p>
+    const { store, actions } = useContext(Context);
+
+    return (
+        <div className="text-center mt-5">
+
+            <div className="card">
+                <img src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png" alt="John" style={{ width: "100 % " }} />
+                <h1>John Doe</h1>
+                <p className="title">CEO & Founder, Example</p>
+                <p>Harvard University</p>
+                <a href="#"><FaTwitter /></a>
+                <a href="#"><FaLinkedin /></a>
+                <a href="#"><FaFacebookF /></a>
+                <p><button>Contact</button></p>
+            </div>
         </div>
-        <div className="card-stats card3">
-          <div className="stat">
-            <div className="value"><sup> <a href="#"><FaTwitter /></a></sup></div>
-            <div className="type">Twitter</div>
-          </div>
-          <div className="stat border">
-            <div className="value"><a href="#"><FaLinkedin /></a></div>
-            <div className="type">LinkedIN</div>
-          </div>
-          <div className="stat">
-            <div className="value"><a href="#"><FaFacebookF /></a></div>
-            <div className="type">Facebook</div>
-          </div>
-        </div>
-      </div>
-      </div>
-      </div>
-    </>
-  );
+    );
 };
