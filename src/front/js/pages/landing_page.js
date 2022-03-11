@@ -6,10 +6,8 @@ import "../../styles/landingpage.css";
 export const Landing = () => {
   const { store, actions } = useContext(Context);
 
-
   return (
-    <>
-
+    <div>
       <img id="imagen" src={dark} alt=""></img>
       <header id="showcase">
         <h1>Welcome To [NameOftheApp]</h1>
@@ -21,8 +19,7 @@ export const Landing = () => {
           Read More
         </a>
       </header>
-      <body>
-
+      <div>
         {/* <section id="section-a">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit minus
@@ -33,7 +30,7 @@ export const Landing = () => {
         
         </p>
       </section> */}
-      </body>
-    </>
+      </div>
+    </div>
   );
 };

@@ -3,12 +3,11 @@ import { serviceDropdown } from "./NavItems";
 import { Link } from "react-router-dom";
 import "./Dropdown.css";
 
-
 function Dropdown() {
   const [dropdown, setDropdown] = useState(false);
 
   return (
-    <>
+    <div>
       <ul
         className={dropdown ? "services-submenu clicked" : "services-submenu"}
         onClick={() => setDropdown(!dropdown)}
@@ -27,7 +26,7 @@ function Dropdown() {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }
 
