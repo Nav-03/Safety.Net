@@ -9,6 +9,7 @@ from api.models import db, Guest
 from api.models import db, GuestPermission
 from api.models import db, Event_Coordinator
 from api.models import db, Permission
+from api.models import db, Features
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from sendgrid import SendGridAPIClient
@@ -172,3 +173,23 @@ def create_token():
         return jsonify({"msg": "Missing email or password"}), 401
     access_token = create_access_token(identity=coordinator.id)
     return jsonify({ "token": access_token, "coordinator_id": coordinator.id })
+
+
+
+@api.route('/features', methods=['POST'])
+def create_feature():
+    features = Features(vip=vip, valet=valet, dinner=dinner)
+    db.session.add(features)
+    db.session.commit()
+    return jsonify(features.serialize())
+
+
+
+@api.route('/features', methods=['GET'])
+def get_features():
+    vip = request.json.get('vip', None)
+    valet = request.json.get('valet', None)
+    dinner = request.json.get('dinner', None)
+    event_id = request.json.get('event_Id', None)
+    guest = request.json.get('guest', None)
+    return jsonify(features)

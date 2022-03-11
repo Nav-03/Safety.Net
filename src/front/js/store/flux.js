@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       Event: [],
       Guest: [],
       Permission: [],
+      Features: []
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -97,6 +98,24 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
           setStore({ guest: myGuestList });
           console.log(myGuestList);
+        }
+      },
+      addFeatures: async (vip, valet, dinner) => {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            vip: vip,
+            valet: valet,
+            dinner: dinner
+          }),
+        };
+        const response = await fetch(process.env.BACKEND_URL + `/api/features`, options);
+        if (response.status === 200) {
+          const payload = await response.json();
+          console.log("feature created successfully!");
+          console.log("payload features", payload);
+          return payload;
         }
       },
     },
