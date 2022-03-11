@@ -2,26 +2,24 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import dark from "../../img/dark.jpg";
 import "../../styles/landingpage.css";
+import { Link } from "react-router-dom";
 
 export const Landing = () => {
   const { store, actions } = useContext(Context);
 
-
   return (
-    <>
-
+    <div>
       <img id="imagen" src={dark} alt=""></img>
       <header id="showcase">
         <h1>Welcome To Safety.NET</h1>
         <p>
           We are a dynamic platform for hosting events and implementing security measures.
         </p>
-        <a href="/main_event " className="button">
+        <Link to="/main_event" className="button">
           Read More
-        </a>
+        </Link>
       </header>
-      <body>
-
+      <div>
         {/* <section id="section-a">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit minus
@@ -32,7 +30,7 @@ export const Landing = () => {
         
         </p>
       </section> */}
-      </body>
-    </>
+      </div>
+    </div>
   );
 };
