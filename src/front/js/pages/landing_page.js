@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import dark from "../../img/dark.jpg";
 import "../../styles/landingpage.css";
+import { Link } from "react-router-dom";
 
 export const Landing = () => {
   const { store, actions } = useContext(Context);
@@ -15,9 +16,9 @@ export const Landing = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
           officiis ipsum officia numquam expedita ullam.
         </p>
-        <a href="/main_event " className="button">
+        <Link to="/main_event" className="button">
           Read More
-        </a>
+        </Link>
       </header>
       <div>
         {/* <section id="section-a">
