@@ -12,10 +12,9 @@ export const Landing = () => {
 
       <img id="imagen" src={dark} alt=""></img>
       <header id="showcase">
-        <h1>Welcome To [NameOftheApp]</h1>
+        <h1>Welcome To Safety.NET</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-          officiis ipsum officia numquam expedita ullam.
+          We are a dynamic platform for hosting events and implementing security measures.
         </p>
         <a href="/main_event " className="button">
           Read More

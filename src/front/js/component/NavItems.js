@@ -15,7 +15,7 @@ export const navItems = [
   },
   {
     id: 3,
-    title: "About [AppName]",
+    title: "About Safety.Net",
     path: "./about",
     cName: "nav-item",
   },
