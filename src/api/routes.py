@@ -11,6 +11,8 @@ from api.models import db, Event_Coordinator
 from api.models import db, Permission
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 api = Blueprint('api', __name__)
 
@@ -69,6 +71,19 @@ def create_guest():
     guest.guest_hash = access_token
     db.session.add(guest)
     db.session.commit()
+    message = Mail(
+    from_email='from_email@example.com',
+    to_emails=email,
+    subject='Welcome to Safety.net',
+    html_content='<strong>and easy to do anywhere, even with Python</strong>')
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e.message)
     return jsonify(guest.serialize())
 
 
