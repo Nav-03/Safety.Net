@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       demo: [],
       coordinator: [],
       Event: [],
-      Guest: [],
+      guest: [],
       Permission: [],
       Features: []
     },
@@ -41,6 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       getCurrentSession: () => {
         const session = JSON.parse(localStorage.getItem("session"));
+        setStore({ session })
         return session;
       },
       createNewSession: async (email, password) => {
@@ -62,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
         if (response.status === 200) {
           const payload = await response.json();
-          localStorage.setItem("session", payload.token);
+          localStorage.setItem("session", JSON.stringify(payload));
           setStore({ session: payload });
           return payload; //this is gonna make the promise resolve
           // return jsonify({ "token": access_token, "user_id": user.id })
@@ -82,6 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const response = await fetch(process.env.BACKEND_URL + `/api/guest`, options);
         if (response.status === 200) {
           const payload = await response.json();
+          setStore({ guest: payload });
           console.log("guest created successfully!");
           console.log("payload guest", payload);
           return payload;
@@ -91,13 +93,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         const response = await fetch(process.env.BACKEND_URL + `/api/guest`);
         if (response.status === 200) {
           const payload = await response.json();
-          const myGuestList = payload.map((guest, i) => {
-            guest.email = "/guest";
-            guest.uid = i;
-            return guest;
-          });
-          setStore({ guest: myGuestList });
-          console.log(myGuestList);
+          setStore({ guest: payload });
+          console.log(payload);
         }
       },
       addFeatures: async (vip, valet, dinner) => {
@@ -116,6 +113,19 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("feature created successfully!");
           console.log("payload features", payload);
           return payload;
+        }
+      },
+      loadFeatures: async () => {
+        const response = await fetch(process.env.BACKEND_URL + `/api/features`);
+        if (response.status === 200) {
+          const payload = await response.json();
+          const features = payload.map((features, i) => {
+            features.email = "/features";
+            features.uid = i;
+            return features;
+          });
+          setStore({ features: features });
+          console.log(features);
         }
       },
     },

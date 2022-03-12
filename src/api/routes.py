@@ -94,31 +94,35 @@ def guest():
     all_guests = list(map(lambda x:x.serialize(),guests))
     return jsonify(all_guests), 200
 
-# @api.route('/guest/<int:guest_id>', methods=['GET'])
-# def getGuest():
-#     guest = Guest.query.get(guest.id)
-#     return jsonify(guest), 200
+@api.route('/guest/<int:guest_id>', methods=['GET'])
+def getGuest(guest_id):
+    guests = Guest.query.get(guest_id)
+    if guests is None:
+        raise APIException('Guest not found', status_code=404)
+    return jsonify(guests.serialize()), 200
 
 
 @api.route('/guest/<int:guest_id>', methods=['PUT'])
 def edit_guest(guest_id):
-    guest = Guest.query.get(guest.id)
-    if guest is None:
+    ind_guest = Guest.query.get(guest_id)
+    body = request.get_json()
+    if ind_guest is None:
         raise APIException('Guest not found', status_code=404)
     if "name" in body:
-        guest.name = body["name"]
+        ind_guest.name = body["name"]
     if "email" in body:
-        guest.email = body["email"]
+        ind_guest.email = body["email"]
     db.session.commit()
-    return jsonify(guest.serialize())
+    return jsonify(ind_guest.serialize())
 
-# @api.route('/guest', methods=['DELETE'])
-# def delete_guest():
-#         guest = Guest.query.get(guest.id)
-#         if guest is None:
-#             raise APIException('User not found', status_code=404)
-# db.session.delete(guest)
-# db.session.commit()
+@api.route('/guest/<int:guest_id>', methods=['DELETE'])
+def delete_guest(guest_id):
+        ind_guest = Guest.query.get(guest_id)
+        if ind_guest is None:
+            raise APIException('User not found', status_code=404)
+        db.session.delete(ind_guest)
+        db.session.commit()
+        return jsonify(ind_guest)
 
 @api.route('/event', methods=['POST'])
 def create_event():
@@ -165,12 +169,12 @@ def permission():
 @api.route('/token', methods=['POST'])
 def create_token():
     if request.json is None:
-        return jsonify({"msg":"Missing the payload"}), 400
+        raise APIException("Missing the payload")
     email = request.json.get('email', None)
     password = request.json.get('password', None)
     coordinator = Coordinator.query.filter_by(email=email, password=password).first()
     if coordinator is None:
-        return jsonify({"msg": "Missing email or password"}), 401
+        raise APIException("Wrong email and password",401)
     access_token = create_access_token(identity=coordinator.id)
     return jsonify({ "token": access_token, "coordinator_id": coordinator.id })
 

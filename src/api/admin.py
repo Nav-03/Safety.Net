@@ -1,7 +1,7 @@
   
 import os
 from flask_admin import Admin
-from .models import db, Coordinator , Event , Guest , Permission
+from .models import db, Coordinator , Event , Guest , Permission, Features
 from flask_admin.contrib.sqla import ModelView
 from flask_jwt_extended import JWTManager
 
@@ -17,6 +17,7 @@ def setup_admin(app):
     admin.add_view(ModelView(Event, db.session))
     admin.add_view(ModelView(Guest, db.session))
     admin.add_view(ModelView(Permission, db.session))
+    admin.add_view(ModelView(Features, db.session))
    
 
     # You can duplicate that line to add mew models
