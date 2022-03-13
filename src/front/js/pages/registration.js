@@ -55,11 +55,11 @@ export const Registration = (props) => {
               {/* <h3>Already have an account? <a href="#">Login now</a></h3> */}
             </div>
 
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown button
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><div className="dropdown-item" ><input type="checkbox" />
                   <h3>VIP</h3></div></li>
                 <li><div className="dropdown-item" ><input type="checkbox" />
