@@ -1,4 +1,4 @@
-Safety.NET
+Tryst
 
 Dynamic platform for hosting events and implementing security measures.
 
