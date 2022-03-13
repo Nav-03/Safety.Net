@@ -27,7 +27,7 @@ export const WebcamCapture = () => {
             height={400}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            width={350}
+            width={360}
             videoConstraints={videoConstraints}
           />
         ) : (
