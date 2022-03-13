@@ -59,14 +59,14 @@ export const Registration = (props) => {
 
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+                Select Options
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><div className="dropdown-item" ><input type="checkbox" />
+                <li><div className="dropdown-item d-flex justify-content-left" ><input type="checkbox" />
                   <h3>VIP</h3></div></li>
-                <li><div className="dropdown-item" ><input type="checkbox" />
+                <li><div className="dropdown-item d-flex justify-content-left" ><input type="checkbox" />
                   <h3>Valet</h3></div></li>
-                <li><div className="dropdown-item" ><input type="checkbox" />
+                <li><div className="dropdown-item d-flex justify-content-left" ><input type="checkbox" />
                   <h3>Dinner</h3></div></li>
               </ul>
 

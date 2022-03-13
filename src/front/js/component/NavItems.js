@@ -15,7 +15,7 @@ export const navItems = [
   },
   {
     id: 3,
-    title: "About Safety.Net",
+    title: "About",
     path: "./about",
     cName: "nav-item",
   },
@@ -46,5 +46,5 @@ export const serviceDropdown = [
     path: "./admin_login",
     cName: "submenu-item",
   }
-  
+
 ];

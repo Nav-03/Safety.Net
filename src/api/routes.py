@@ -75,7 +75,7 @@ def create_guest():
     message = Mail(
     from_email='from_email@example.com',
     to_emails=email,
-    subject='Welcome to Safety.net',
+    subject='Welcome to Tryst',
     html_content='<strong>and easy to do anywhere, even with Python</strong>')
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
