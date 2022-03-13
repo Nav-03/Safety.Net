@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Secure_Event from "../../img/Secure_Event.png";
 import "../../styles/registration.css";
 import dark from "../../img/dark.jpg";
+import { WebcamCapture } from "../component/Webcam.jsx";
 
 export const Registration = (props) => {
   const history = useHistory();
@@ -30,6 +31,7 @@ export const Registration = (props) => {
         <div className="wrapper">
           <h2>Registration</h2>
           <form onSubmit={handleSubmit}>
+            <WebcamCapture />
             <div className="input-box">
               <input
                 onChange={handleChange}
