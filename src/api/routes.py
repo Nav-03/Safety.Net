@@ -9,7 +9,6 @@ from api.models import db, Guest
 from api.models import db, GuestPermission
 from api.models import db, Event_Coordinator
 from api.models import db, Permission
-from api.models import db, Features
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from sendgrid import SendGridAPIClient
@@ -33,8 +32,7 @@ def create_coordinator():
 def coordinator():
     current_coordinator_id = get_jwt_identity()
     coordinator = Coordinator.query.get(current_coordinator_id)
-    # all_coordinators = Coordinator.query.all()
-    # return jsonify([c.serialize() for c in all_coordinators])
+
     return jsonify({"id": coordinator.id, "email": coordinator.email }), 200
 
 
@@ -142,7 +140,7 @@ def event():
 
 @api.route('/permission', methods=['POST'])
 def create_permission():
-    permission = Permission(name = name , event_id = event_id , guest = guest )
+    permission = Permission( event_id = event_id , guest = guest ,vip=vip, valet=valet, dinner=dinner)
     db.session.add(permission)
     db.session.commit()
     return jsonify(permission.serialize())
@@ -151,8 +149,10 @@ def create_permission():
 
 @api.route('/permission', methods=['GET'])
 def permission():
-    name = request.json.get('name', None)
     event_id = request.json.get('event_Id', None)
+    vip = request.json.get('vip', None)
+    valet = request.json.get('valet', None)
+    dinner = request.json.get('dinner', None)
     guest = request.json.get('guest', None)
     return jsonify(permission)
    
@@ -180,20 +180,3 @@ def create_token():
 
 
 
-@api.route('/features', methods=['POST'])
-def create_feature():
-    features = Features(vip=vip, valet=valet, dinner=dinner)
-    db.session.add(features)
-    db.session.commit()
-    return jsonify(features.serialize())
-
-
-
-@api.route('/features', methods=['GET'])
-def get_features():
-    vip = request.json.get('vip', None)
-    valet = request.json.get('valet', None)
-    dinner = request.json.get('dinner', None)
-    event_id = request.json.get('event_Id', None)
-    guest = request.json.get('guest', None)
-    return jsonify(features)

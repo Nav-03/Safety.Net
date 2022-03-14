@@ -71,7 +71,7 @@ class Guest(db.Model):
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     
     def __repr__(self):
-        return f'Guest : {self.id}'
+        return f'Guest : {self.name}'
 
     def serialize(self):
         return {
@@ -87,7 +87,9 @@ class Guest(db.Model):
 
 class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
-    name = db.Column(db.String(120), unique=True, nullable=False)
+    vip = db.Column(db.Boolean(), unique=False, nullable=False)
+    valet = db.Column(db.Boolean(), unique=False, nullable=False)
+    dinner = db.Column(db.Boolean(), unique=False, nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     guest = db.relationship("Guest",
                     secondary=GuestPermission)
@@ -96,36 +98,7 @@ class Permission(db.Model):
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
-        return f'Permission : {self.id}'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "event_id": self.event_id,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
-            # do not serialize the password, its a security breach
-        }
-
-GuestFeatures = db.Table('features_association',
-    db.Column("guest_id", db.Integer, db.ForeignKey("guest.id"), primary_key=True),
-    db.Column("features_id", db.Integer, db.ForeignKey("features.id"), primary_key=True)
-)
-
-class Features(db.Model):
-    id = db.Column(db.Integer, primary_key=True) 
-    vip = db.Column(db.Boolean(), unique=False, nullable=False)
-    valet = db.Column(db.Boolean(), unique=False, nullable=False)
-    dinner = db.Column(db.Boolean(), unique=False, nullable=False)
-    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
-    guest = db.relationship("Guest",
-                    secondary=GuestFeatures)
-    created_at = db.Column(db.DateTime)
-    updated_at = db.Column(db.DateTime)
-    # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-
-    def __repr__(self):
-        return f'Features : {self.id}'
+        return f'Permission : {self.guest}'
 
     def serialize(self):
         return {
@@ -138,3 +111,9 @@ class Features(db.Model):
             "updated_at": self.updated_at,
             # do not serialize the password, its a security breach
         }
+
+GuestFeatures = db.Table('features_association',
+    db.Column("guest_id", db.Integer, db.ForeignKey("guest.id"), primary_key=True),
+    db.Column("features_id", db.Integer, db.ForeignKey("features.id"), primary_key=True)
+)
+

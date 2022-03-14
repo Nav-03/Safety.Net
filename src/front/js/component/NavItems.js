@@ -10,7 +10,7 @@ export const navItems = [
   {
     id: 2,
     title: "Events",
-    path: "./",
+    path: "./main_event",
     cName: "nav-item",
   },
   {
