@@ -11,7 +11,7 @@ export const Landing = () => {
     <div>
       <img id="imagen" src={dark} alt=""></img>
       <header id="showcase">
-        <h1>Welcome To Tryst</h1>
+        <h1>Welcome To Safety.Net</h1>
         <p>
           We are a dynamic platform for hosting events and implementing security measures.
         </p>

@@ -17,7 +17,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/landing_page" className="navbar-logo">
-        <h2>Tryst</h2>
+        <h2>Safety.Net</h2>
       </Link>
       <ul className="nav-items">
         {navItems.map((item) => {

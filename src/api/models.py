@@ -112,8 +112,3 @@ class Permission(db.Model):
             # do not serialize the password, its a security breach
         }
 
-GuestFeatures = db.Table('features_association',
-    db.Column("guest_id", db.Integer, db.ForeignKey("guest.id"), primary_key=True),
-    db.Column("features_id", db.Integer, db.ForeignKey("features.id"), primary_key=True)
-)
-
