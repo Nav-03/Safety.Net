@@ -10,29 +10,28 @@
   }
 }
 #about {
-    height: 100vh;
-    background: #000;
-    background-image: url(https://avatars.githubusercontent.com/u/16607406?s=280&v=4);
-    background-size: auto;
-    width: 100%;
-  }
-  
-  .contenedor{
-    height: 100vh;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-  }
-  
-  h1 {
-    animation: slide-in 1s;
-    font-family: "Dancing Script", cursive;
-    font-size: 100px;
-    text-align: center;
-  }
-  #h2text{
-    font-family: "Dancing Script", cursive;
-    text-align: left;
-    padding: 100px;
-    animation: slide-in 1s;
-  }
-  
+  height: 100vh;
+  background: #000;
+  background-image: url(https://avatars.githubusercontent.com/u/16607406?s=280&v=4);
+  background-size: auto;
+  width: 100%;
+}
+
+.contenedor {
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+h1 {
+  animation: slide-in 1s;
+  font-family: "Gill Sans", sans-serif;
+  font-size: 100px;
+  text-align: center;
+}
+#h2text {
+  font-family: "Gill Sans", sans-serif;
+  text-align: left;
+  padding: 100px;
+  animation: slide-in 1s;
+}

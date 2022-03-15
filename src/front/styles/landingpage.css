@@ -54,12 +54,12 @@ body {
   animation: slide-in 3s;
   font-size: 70px;
   line-height: 1.2;
-  font-family: "Dancing Script", cursive;
+  font-family: "Gill Sans", sans-serif;
 }
 
 #showcase p {
   font-size: 30px;
-  font-family: "Dancing Script", cursive;
+  font-family: "Gill Sans", sans-serif;
   animation: slide-in 3s;
 }
 
