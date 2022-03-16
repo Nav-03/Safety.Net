@@ -30,27 +30,6 @@ class Coordinator(db.Model):
         }
 
 
-class Event(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String(120), unique=True, nullable=False)
-    guest_id = db.Column(db.Integer, db.ForeignKey('guest.id'))
-    coordinator = db.relationship("Coordinator",
-                    secondary=Event_Coordinator)
-    created_at = db.Column(db.DateTime)
-    updated_at = db.Column(db.DateTime)
-
-    def __repr__(self):
-        return f'Event : {self.event_name}'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "event_name": self.event_name,
-            "guest_id": self.guest_id,
-            "event": list(map(lambda x: x.serialize(), self.event)),
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
-        }
 
 
 GuestPermission = db.Table('guest_association',
@@ -91,7 +70,7 @@ class Permission(db.Model):
     valet = db.Column(db.Boolean(), unique=False, nullable=False)
     dinner = db.Column(db.Boolean(), unique=False, nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
-    guest = db.relationship("Guest",
+    guest = db.relationship(Guest,
                     secondary=GuestPermission)
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
@@ -112,3 +91,25 @@ class Permission(db.Model):
             # do not serialize the password, its a security breach
         }
 
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    event_name = db.Column(db.String(120), unique=True, nullable=False)
+    # If you reset migrations, comment out line 98 and migrate,then uncomment and migrate again
+    guest_id = db.Column(db.Integer, db.ForeignKey('guest.id'))
+    coordinator = db.relationship("Coordinator",
+                    secondary=Event_Coordinator)
+    created_at = db.Column(db.DateTime)
+    updated_at = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return f'Event : {self.event_name}'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "event_name": self.event_name,
+            "guest_id": self.guest_id,
+            "event": list(map(lambda x: x.serialize(), self.event)),
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,
+        }
