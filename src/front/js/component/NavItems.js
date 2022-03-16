@@ -11,7 +11,25 @@ export const navItems = [
     id: 2,
     title: "Events",
     path: "./main_event",
-    cName: "nav-item",
+    cName: "nav-item dropdown",
+    items: [{
+      id: 1,
+      title: "Sign up for an event",
+      path: "./registration",
+      cName: "dropdown-item"
+    },
+    {
+      id: 2,
+      title: "Event Details",
+      path: "./event_details",
+      cName: "dropdown-item"
+    },
+    {
+      id: 3,
+      title: "Admin Login",
+      path: "./admin_login",
+      cName: "dropdown-item"
+    }]
   },
   {
     id: 3,
@@ -25,26 +43,4 @@ export const navItems = [
     path: "./contact_us",
     cName: "nav-item",
   },
-];
-
-export const serviceDropdown = [
-  {
-    id: 1,
-    title: "Sign up for an event",
-    path: "./registration",
-    cName: "submenu-item"
-  },
-  {
-    id: 2,
-    title: "Event Details",
-    path: "./event_details",
-    cName: "submenu-item",
-  },
-  {
-    id: 3,
-    title: "Admin Login",
-    path: "./admin_login",
-    cName: "submenu-item",
-  }
-
 ];

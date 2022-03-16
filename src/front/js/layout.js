@@ -17,7 +17,7 @@ import { Contactus } from "./pages/contactus.js";
 import { About } from "./pages/about.js";
 import { Eventdetails } from "./pages/main_event.js";
 
-import { Navbar } from "./component/navbar";
+import { NavbarComponent } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Registration } from "./pages/registration";
 
@@ -31,7 +31,7 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<NavbarComponent />
 					<Switch>
 						<Route exact path="/">
 							<Redirect to="/landing_page" />

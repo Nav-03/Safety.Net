@@ -15,7 +15,6 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { useHistory, useParams } from "react-router-dom";
 import "../../styles/coordinator.css";
-import 'bootstrap/dist/css/bootstrap.css';
 
 
 
