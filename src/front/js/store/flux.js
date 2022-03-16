@@ -7,7 +7,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       Event: [],
       guest: [],
       Permission: [],
-      Features: []
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -97,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(payload);
         }
       },
-      addFeatures: async (vip, valet, dinner) => {
+      addPermissions: async (vip, valet, dinner) => {
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -107,25 +106,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             dinner: dinner
           }),
         };
-        const response = await fetch(process.env.BACKEND_URL + `/api/features`, options);
+        const response = await fetch(process.env.BACKEND_URL + `/api/permission`, options);
         if (response.status === 200) {
           const payload = await response.json();
-          console.log("feature created successfully!");
-          console.log("payload features", payload);
+          console.log("permission created successfully!");
+          console.log("payload permission", payload);
           return payload;
         }
       },
-      loadFeatures: async () => {
-        const response = await fetch(process.env.BACKEND_URL + `/api/features`);
+      loadPermissions: async () => {
+        const response = await fetch(process.env.BACKEND_URL + `/api/permission`);
         if (response.status === 200) {
           const payload = await response.json();
-          const features = payload.map((features, i) => {
-            features.email = "/features";
-            features.uid = i;
-            return features;
+          const permissions = payload.map((permissions, i) => {
+            permissions.email = "/permission";
+            permissions.uid = i;
+            return permissions;
           });
-          setStore({ features: features });
-          console.log(features);
+          setStore({ permissions: permissions });
+          console.log(permissions);
         }
       },
     },
