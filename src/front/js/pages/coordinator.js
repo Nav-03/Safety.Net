@@ -25,7 +25,7 @@ export const Coordinator = (props) => {
     const { store, actions } = useContext(Context);
     const params = useParams();
     const history = useHistory();
-    const handleOnClick = useCallback(() => history.push('/IDcard'), [history]);
+    const handleOnClick = useCallback((guest) => history.push('/IDcard/' + guest.guest_hash), [history]);
     const [formData, setFormData] = useState([store.guest]);
     console.log(formData)
     const addGuest = () => {
@@ -79,7 +79,7 @@ export const Coordinator = (props) => {
                                         <span className="table-details">
 
 
-                                            <button onClick={handleOnClick} type="button" className="btn btn-primary btn-rounded btn-sm my-0">
+                                            <button onClick={() => handleOnClick(guest)} type="button" className="btn btn-primary btn-rounded btn-sm my-0">
                                                 Details
                                             </button></span>
 

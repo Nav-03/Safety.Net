@@ -10,7 +10,7 @@ from api.models import db, GuestPermission
 from api.models import db, Event_Coordinator
 from api.models import db, Permission
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, decode_token
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
@@ -95,6 +95,16 @@ def guest():
 @api.route('/guest/<int:guest_id>', methods=['GET'])
 def getGuest(guest_id):
     guests = Guest.query.get(guest_id)
+    if guests is None:
+        raise APIException('Guest not found', status_code=404)
+    return jsonify(guests.serialize()), 200
+
+@api.route('/guest/token/<string:token>', methods=['GET'])
+def get_user_from_token(token):
+    identity = decode_token(token)
+    print("identity", identity)
+    
+    guests = Guest.query.get(identity["sub"])
     if guests is None:
         raise APIException('Guest not found', status_code=404)
     return jsonify(guests.serialize()), 200

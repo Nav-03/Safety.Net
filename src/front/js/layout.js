@@ -39,7 +39,7 @@ const Layout = () => {
             <Route exact path="/coordinator">
               <Coordinator />
             </Route>
-            <Route exact path="/id/:id">
+            <Route exact path="/IDcard/:token">
               <IDcard />
             </Route>
             <Route exact path="/demo">

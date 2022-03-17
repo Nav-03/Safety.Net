@@ -44,6 +44,7 @@ class Guest(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     permission = db.relationship("Permission",
                     secondary=GuestPermission)
+    event = db.relationship("Event")
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
     guest_hash = db.Column(db.String(500), unique=True, nullable=True)
@@ -94,8 +95,6 @@ class Permission(db.Model):
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(120), unique=True, nullable=False)
-    # If you reset migrations, comment out line 98 and migrate,then uncomment and migrate again
-    guest_id = db.Column(db.Integer, db.ForeignKey('guest.id'))
     coordinator = db.relationship("Coordinator",
                     secondary=Event_Coordinator)
     created_at = db.Column(db.DateTime)

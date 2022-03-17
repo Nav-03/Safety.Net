@@ -31,9 +31,9 @@ export const IDcard = () => {
   };
 
   useEffect(() => {
-    getUser();
-  });
-
+    actions.getUserFromToken(params.token).then(user => { setGuest(user) })
+  }, [])
+  if (!guest) return "loading..."
   return (
     <div className="text-center mt-5">
       <div className="card">

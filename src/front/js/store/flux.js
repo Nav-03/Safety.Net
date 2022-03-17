@@ -97,6 +97,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           return payload;
         }
       },
+      getUserFromToken: async (token) => {
+        const response = await fetch(process.env.BACKEND_URL + `/api/guest/token/${token}`);
+        if (response.status === 200) {
+          const payload = await response.json();
+          // setStore({ guest: payload });
+          return payload;
+        }
+      },
       loadGuests: async () => {
         const response = await fetch(process.env.BACKEND_URL + `/api/guest`);
         if (response.status === 200) {
