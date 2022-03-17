@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
-import Secure_Event from "../../img/Secure_Event.png";
 import "../../styles/registration.css";
 import dark from "../../img/dark.jpg";
 import { WebcamCapture } from "../component/Webcam.jsx";
+import { Form } from "react-bootstrap";
 
 export const Registration = (props) => {
   const history = useHistory();
@@ -21,7 +20,9 @@ export const Registration = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { name, email } = formData;
-    actions.addGuest(name, email).then(() => history.push("/guest"));
+    actions
+      .addGuest(name, email)
+      .then((response) => history.push(`/id/${response.id}`));
   };
 
   return (
@@ -58,21 +59,38 @@ export const Registration = (props) => {
             </div>
 
             <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Options
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><div className="dropdown-item d-flex justify-content-left" ><input type="checkbox" />
-                  <h3>VIP</h3></div></li>
-                <li><div className="dropdown-item d-flex justify-content-left" ><input type="checkbox" />
-                  <h3>Valet</h3></div></li>
-                <li><div className="dropdown-item d-flex justify-content-left" ><input type="checkbox" />
-                  <h3>Dinner</h3></div></li>
-              </ul>
-
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check
+                  onChange={handleChange}
+                  value={formData.vip}
+                  checked={formData.vip}
+                  type="checkbox"
+                  name="vip"
+                  id="vip"
+                  label="VIP"
+                />
+                <Form.Check
+                  onChange={handleChange}
+                  value={formData.valet}
+                  checked={formData.valet}
+                  name="valet"
+                  id="valet"
+                  type="checkbox"
+                  label="Valet"
+                />
+                <Form.Check
+                  onChange={handleChange}
+                  value={formData.dinner}
+                  checked={formData.dinner}
+                  name="dinner"
+                  id="dinner"
+                  type="checkbox"
+                  label="Dinner"
+                />
+              </Form.Group>
             </div>
-            <div className="input-box button">
-              <input type="Submit" value="Register Now" />
+            <div className="input-box">
+              <button class="button">Register Now</button>
             </div>
           </form>
         </div>

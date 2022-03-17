@@ -2,42 +2,51 @@
 
 //Card should have a picture
 
-//Card should have a name displayed 
+//Card should have a name displayed
 
 //card should have access level displayed
-
 
 //QR code should be dynamic with 2 endpoints: 1. endpoint coordinator page
 //                                            2. endpoint members page
 
-
-//When a different member scans MY QR code, I should receive a notification 
+//When a different member scans MY QR code, I should receive a notification
 //asking if i will like to share my contact information
 
-
-
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/IDcard.css";
-import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa"
+import { FaEnvelope } from "react-icons/fa";
 
 export const IDcard = () => {
-    const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const [guest, setGuest] = useState("");
+  const params = useParams();
 
-    return (
-        <div className="text-center mt-5">
+  const getUser = () => {
+    const guests = store.guest;
+    if (!!guests && guests.length > 0) {
+      setGuest(guests.find((guest) => guest.id == params.id));
+    }
+  };
 
-            <div className="card">
-                <img src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png" alt="John" style={{ width: "100 % " }} />
-                <h1>John Doe</h1>
-                <p className="title">CEO & Founder, Example</p>
-                <p>Harvard University</p>
-                <a href="#"><FaTwitter /></a>
-                <a href="#"><FaLinkedin /></a>
-                <a href="#"><FaFacebookF /></a>
-                <p><button>Contact</button></p>
-            </div>
-        </div>
-    );
+  useEffect(() => {
+    getUser();
+  });
+
+  return (
+    <div className="text-center mt-5">
+      <div className="card">
+        <img
+          src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png"
+          alt="John"
+          style={{ width: "100% " }}
+        />
+        <h1>{guest.name}</h1>
+        <a href={`mailto:${guest.email}`} target="_blank">
+          <FaEnvelope></FaEnvelope>
+        </a>
+      </div>
+    </div>
+  );
 };

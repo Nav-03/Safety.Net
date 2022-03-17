@@ -74,7 +74,7 @@ def create_guest():
     from_email='from_email@example.com',
     to_emails=email,
     subject='Welcome to Safety.Net',
-    html_content='<strong>and easy to do anywhere, even with Python</strong>')
+    html_content='<strong>Nav check Slack please</strong>')
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)

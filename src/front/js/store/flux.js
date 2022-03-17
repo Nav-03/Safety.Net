@@ -40,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       getCurrentSession: () => {
         const session = JSON.parse(localStorage.getItem("session"));
-        setStore({ session })
+        setStore({ session });
         return session;
       },
       createNewSession: async (email, password) => {
@@ -79,12 +79,21 @@ const getState = ({ getStore, getActions, setStore }) => {
             email: email,
           }),
         };
-        const response = await fetch(process.env.BACKEND_URL + `/api/guest`, options);
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/guest`,
+          options
+        );
         if (response.status === 200) {
           const payload = await response.json();
           setStore({ guest: payload });
-          console.log("guest created successfully!");
-          console.log("payload guest", payload);
+          return payload;
+        }
+      },
+      loadGuest: async (id) => {
+        const response = await fetch(process.env.BACKEND_URL + `/api/guest/${id}`);
+        if (response.status === 200) {
+          const payload = await response.json();
+          // setStore({ guest: payload });
           return payload;
         }
       },
@@ -93,7 +102,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.status === 200) {
           const payload = await response.json();
           setStore({ guest: payload });
-          console.log(payload);
         }
       },
       addPermissions: async (vip, valet, dinner) => {
@@ -103,10 +111,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify({
             vip: vip,
             valet: valet,
-            dinner: dinner
+            dinner: dinner,
           }),
         };
-        const response = await fetch(process.env.BACKEND_URL + `/api/permission`, options);
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/permission`,
+          options
+        );
         if (response.status === 200) {
           const payload = await response.json();
           console.log("permission created successfully!");
@@ -115,7 +126,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       loadPermissions: async () => {
-        const response = await fetch(process.env.BACKEND_URL + `/api/permission`);
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/permission`
+        );
         if (response.status === 200) {
           const payload = await response.json();
           const permissions = payload.map((permissions, i) => {
