@@ -63,7 +63,7 @@ export const Coordinator = (props) => {
                             <tr>
                                 <th className="text-center">Guest Name</th>
                                 <th className="text-center">email</th>
-                                <th className="text-center">Access Level</th>
+                                <th className="text-center">Permissions</th>
                                 <th className="text-center">Details</th>
                                 <th className="text-center">Remove</th>
                             </tr>

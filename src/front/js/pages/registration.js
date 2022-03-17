@@ -14,14 +14,18 @@ export const Registration = (props) => {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setFormData((values) => ({ ...values, [name]: value }));
+    const vip = event.target.vip;
+    const valet = event.target.valet;
+    const dinner = event.target.vip;
+    setFormData((values) => ({ ...values, [name]: value, [vip]: value, [valet]: value, [dinner]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email } = formData;
+    const { name, email, vip, valet, dinner } = formData;
     actions
       .addGuest(name, email)
+      .addPermissions(vip, valet, dinner)
       .then((response) => history.push(`/id/${response.id}`));
   };
 
@@ -63,7 +67,7 @@ export const Registration = (props) => {
                 <Form.Check
                   onChange={handleChange}
                   value={formData.vip}
-                  checked={formData.vip}
+                  // checked={formData.vip}
                   type="checkbox"
                   name="vip"
                   id="vip"
@@ -72,7 +76,7 @@ export const Registration = (props) => {
                 <Form.Check
                   onChange={handleChange}
                   value={formData.valet}
-                  checked={formData.valet}
+                  // checked={formData.valet}
                   name="valet"
                   id="valet"
                   type="checkbox"
@@ -81,7 +85,7 @@ export const Registration = (props) => {
                 <Form.Check
                   onChange={handleChange}
                   value={formData.dinner}
-                  checked={formData.dinner}
+                  // checked={formData.dinner}
                   name="dinner"
                   id="dinner"
                   type="checkbox"
@@ -90,7 +94,7 @@ export const Registration = (props) => {
               </Form.Group>
             </div>
             <div className="input-box">
-              <button class="button">Register Now</button>
+              <button className="button">Register Now</button>
             </div>
           </form>
         </div>
