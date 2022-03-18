@@ -12,9 +12,6 @@ export const Registration = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    vip: false,
-    valet: false,
-    dinner: false,
   });
 
   const handleChange = (event) => {
@@ -26,7 +23,7 @@ export const Registration = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, vip, valet, dinner } = formData;
+    const { name, email } = formData;
     console.log(formData);
     actions.addGuest(name, email).then((response) => {
       history.push(`/IDcard/${response.id}`);
@@ -65,35 +62,6 @@ export const Registration = (props) => {
 
             <div className="text">
               {/* <h3>Already have an account? <a href="#">Login now</a></h3> */}
-            </div>
-
-            <div className="dropdown">
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check
-                  onChange={handleChange}
-                  // checked={formData.vip}
-                  type="checkbox"
-                  name="vip"
-                  id="vip"
-                  label="VIP"
-                />
-                <Form.Check
-                  onChange={handleChange}
-                  // checked={formData.valet}
-                  name="valet"
-                  id="valet"
-                  type="checkbox"
-                  label="Valet"
-                />
-                <Form.Check
-                  onChange={handleChange}
-                  // checked={formData.dinner}
-                  name="dinner"
-                  id="dinner"
-                  type="checkbox"
-                  label="Dinner"
-                />
-              </Form.Group>
             </div>
             <div className="input-box">
               <button className="button">Register Now</button>
