@@ -62,8 +62,9 @@ def create_guest():
         return jsonify({"msg":"Missing the payload"}), 400
     email = request.json.get('email', None)
     name = request.json.get('name', None)
+    image= request.json.get('image', None)
     event_id = request.json.get('event_id', None)
-    guest = Guest(name=name,email=email,event_id=event_id) 
+    guest = Guest(name=name,email=email,event_id=event_id, image=image) 
     db.session.add(guest)
     db.session.commit()
     access_token = create_access_token(identity=guest.id)
@@ -74,7 +75,7 @@ def create_guest():
     from_email='from_email@example.com',
     to_emails=email,
     subject='Welcome to Safety.Net',
-    html_content='<strong>Nav check Slack please</strong>')
+    html_content=os.getenv("FRONTEND_URL", "")+ f"/guest_scan?token={request.args.get('token')}")
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)

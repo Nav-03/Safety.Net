@@ -77,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify({
             name: name,
             email: email,
-            image
+            image: image,
           }),
         };
         const response = await fetch(
