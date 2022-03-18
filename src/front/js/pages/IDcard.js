@@ -27,7 +27,7 @@ export const IDcard = () => {
   const sampleImage =
     "https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png";
 
-  const getTheCurrentURL = `${process.env.FRONT_URL}/admin_login`;
+  const getTheCurrentURL = `/admin_login`;
 
   useEffect(() => {
     actions.getUserFromToken(params.token).then((user) => {
