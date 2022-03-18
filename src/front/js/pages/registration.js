@@ -9,24 +9,31 @@ import { Form } from "react-bootstrap";
 export const Registration = (props) => {
   const history = useHistory();
   const { store, actions } = useContext(Context);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    vip: false,
+    valet: false,
+    dinner: false,
+  });
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    const vip = event.target.vip;
-    const valet = event.target.valet;
-    const dinner = event.target.vip;
-    setFormData((values) => ({ ...values, [name]: value, [vip]: value, [valet]: value, [dinner]: value }));
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const { name, email, vip, valet, dinner } = formData;
-    actions
-      .addGuest(name, email)
-      .addPermissions(vip, valet, dinner)
-      .then((response) => history.push(`/id/${response.id}`));
+    console.log(formData);
+    actions.addGuest(name, email).then((response) => {
+      history.push(`/IDcard/${response.id}`);
+      // actions
+      //   .addPermissions(1, response, vip, valet, dinner)
+      //   .then(() => history.push(`/id/${response.id}`));
+    });
   };
 
   return (
@@ -40,7 +47,6 @@ export const Registration = (props) => {
             <div className="input-box">
               <input
                 onChange={handleChange}
-                value={formData.name}
                 name="name"
                 type="text"
                 placeholder="Enter your First and Last Name"
@@ -50,7 +56,6 @@ export const Registration = (props) => {
             <div className="input-box">
               <input
                 onChange={handleChange}
-                value={formData.email}
                 name="email"
                 type="text"
                 placeholder="Enter your email"
@@ -66,7 +71,6 @@ export const Registration = (props) => {
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
                   onChange={handleChange}
-                  value={formData.vip}
                   // checked={formData.vip}
                   type="checkbox"
                   name="vip"
@@ -75,7 +79,6 @@ export const Registration = (props) => {
                 />
                 <Form.Check
                   onChange={handleChange}
-                  value={formData.valet}
                   // checked={formData.valet}
                   name="valet"
                   id="valet"
@@ -84,7 +87,6 @@ export const Registration = (props) => {
                 />
                 <Form.Check
                   onChange={handleChange}
-                  value={formData.dinner}
                   // checked={formData.dinner}
                   name="dinner"
                   id="dinner"
