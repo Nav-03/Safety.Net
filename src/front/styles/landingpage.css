@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
 }
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nanum+Gothic&display=swap");
 @keyframes drop-in {
   from {
     transform: rotate(-30deg) translateY(-100%);
@@ -34,7 +34,7 @@
 }
 body {
   margin: 0;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 17px;
   color: #fff;
   line-height: 1.6;
@@ -54,12 +54,12 @@ body {
   animation: slide-in 3s;
   font-size: 70px;
   line-height: 1.2;
-  font-family: "Gill Sans", sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 #showcase p {
   font-size: 30px;
-  font-family: "Gill Sans", sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
   animation: slide-in 3s;
 }
 
