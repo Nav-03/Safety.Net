@@ -41,7 +41,7 @@ class Guest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(80), nullable=False)
     name = db.Column(db.String(80), nullable=False)
-    image = db.Column(db.text)
+    image = db.Column(db.Text)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     permission = db.relationship("Permission",
                     secondary=GuestPermission)

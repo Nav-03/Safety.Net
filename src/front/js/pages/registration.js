@@ -18,7 +18,7 @@ export const Registration = (props) => {
   const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: target.value });
   };
 
   const imageCapture = (imageBase) => {
@@ -29,9 +29,9 @@ export const Registration = (props) => {
     event.preventDefault();
     const { name, email, image } = formData;
     console.log(formData);
-    // actions.addGuest(name, email, image).then((response) => {
-    //   history.push(`/IDcard/${response.id}`);
-    // });
+    actions.addGuest(name, email, image).then((response) => {
+      history.push(`/IDcard/${response.id}`);
+    });
   };
 
   return (
