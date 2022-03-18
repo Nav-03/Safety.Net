@@ -35,14 +35,14 @@ export const IDcard = () => {
   }, [])
   if (!guest) return "loading..."
   return (
-    <div className="text-center mt-5">
+    <div className="text-center py-5 card-container">
       <div className="card">
         <img
           src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png"
-          alt="John"
+          alt="avatar"
           style={{ width: "100% " }}
         />
-        <h1>{guest.name}</h1>
+        <p className="guest-name">{guest.name}</p>
         <a href={`mailto:${guest.email}`} target="_blank">
           <FaEnvelope></FaEnvelope>
         </a>

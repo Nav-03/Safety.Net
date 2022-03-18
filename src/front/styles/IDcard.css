@@ -2,6 +2,7 @@
   background: url("https://storage.googleapis.com/rafaellovera/dark.jpg")
     no-repeat;
   background-size: cover;
+  height: 85vh;
 }
 
 .card {
@@ -42,4 +43,9 @@ a {
 button:hover,
 a:hover {
   opacity: 0.7;
+}
+
+.guest-name {
+  padding-top: 4rem;
+  font-size: 2rem;
 }
