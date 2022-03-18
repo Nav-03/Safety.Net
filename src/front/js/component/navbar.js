@@ -33,7 +33,7 @@ export const NavbarComponent = () => {
         </Navbar.Collapse>
 
         <Navbar.Collapse className="justify-content-end">
-          <Button variant="light">
+          <Button variant="outline-info boton">
             <Nav.Link href="/admin_login">Admin</Nav.Link>
           </Button>
         </Navbar.Collapse>

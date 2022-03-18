@@ -75,7 +75,7 @@ body {
 }
 
 #showcase .button:hover {
-  background: #548ad1;
+  background: rgb(0, 212, 212);;
   color: rgb(255, 255, 255);
 }
 
@@ -84,6 +84,11 @@ body {
   background: #397d92;
   color: #fff;
   text-align: center;
+}
+#titulo {
+  text-decoration: underline;
+  text-decoration-color: rgb(0, 212, 212);
+  
 }
 
 /* #section-b {
