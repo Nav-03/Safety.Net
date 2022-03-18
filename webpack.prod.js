@@ -7,10 +7,10 @@ module.exports = merge(common, {
     publicPath: "/",
   },
   plugins: [
-    new webpack.EnvironmentPlugin({
+    new webpack.DefinePlugin({
       "process.env": {
         FRONT_URL: JSON.stringify(process.env.FRONT_URL),
-        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL)
+        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL),
       },
     }),
   ],
