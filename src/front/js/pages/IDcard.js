@@ -17,25 +17,24 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/IDcard.css";
 import { FaEnvelope } from "react-icons/fa";
+import QRCode from "react-qr-code";
 
 export const IDcard = () => {
   const { store, actions } = useContext(Context);
   const [guest, setGuest] = useState("");
   const params = useParams();
 
-  const getUser = () => {
-    const guests = store.guest;
-    if (!!guests && guests.length > 0) {
-      setGuest(guests.find((guest) => guest.id == params.id));
-    }
-  };
+  const getTheCurrentURL = `${process.env.FRONT_URL}/admin_login`;
 
   useEffect(() => {
-    actions.getUserFromToken(params.token).then(user => { setGuest(user) })
-  }, [])
-  if (!guest) return "loading..."
+    actions.getUserFromToken(params.token).then((user) => {
+      setGuest(user);
+    });
+  }, []);
+  if (!guest) return "loading...";
   return (
     <div className="text-center py-5 card-container">
+      <QRCode value={getTheCurrentURL} />
       <div className="card">
         <img
           src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png"

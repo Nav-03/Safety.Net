@@ -12,25 +12,26 @@ export const Registration = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    image: "",
   });
 
   const handleChange = (event) => {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
     setFormData({ ...formData, [name]: value });
   };
 
+  const imageCapture = (imageBase) => {
+    setFormData({ ...formData, image: imageBase });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email } = formData;
+    const { name, email, image } = formData;
     console.log(formData);
-    actions.addGuest(name, email).then((response) => {
-      history.push(`/IDcard/${response.id}`);
-      // actions
-      //   .addPermissions(1, response, vip, valet, dinner)
-      //   .then(() => history.push(`/id/${response.id}`));
-    });
+    // actions.addGuest(name, email, image).then((response) => {
+    //   history.push(`/IDcard/${response.id}`);
+    // });
   };
 
   return (
@@ -40,7 +41,7 @@ export const Registration = (props) => {
         <div className="wrapper">
           <h2>Registration</h2>
           <form onSubmit={handleSubmit}>
-            <WebcamCapture />
+            <WebcamCapture onImageCapture={imageCapture} />
             <div className="input-box">
               <input
                 onChange={handleChange}
