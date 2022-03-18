@@ -10,6 +10,7 @@ module.exports = merge(common, {
     new webpack.EnvironmentPlugin({
       "process.env": {
         FRONT_URL: JSON.stringify(process.env.FRONT_URL),
+        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL)
       },
     }),
   ],
