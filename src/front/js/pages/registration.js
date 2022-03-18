@@ -30,7 +30,7 @@ export const Registration = (props) => {
     const { name, email, image } = formData;
     console.log(formData);
     actions.addGuest(name, email, image).then((response) => {
-      history.push(`/IDcard/${response.id}`);
+      history.push(`/registered`);
     });
   };
 
