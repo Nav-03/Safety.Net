@@ -20,6 +20,7 @@ import { Eventdetails } from "./pages/main_event.js";
 import { NavbarComponent } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Registration } from "./pages/registration";
+import { Registered } from "./pages/registered.js";
 
 //create your first component
 const Layout = () => {
@@ -44,6 +45,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/demo">
               <Demo />
+            </Route>
+            <Route exact path="/registered">
+              <Registered />
             </Route>
             <Route exact path="/admin_login">
               <AdminLogin />
