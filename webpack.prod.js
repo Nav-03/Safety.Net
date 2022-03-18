@@ -12,7 +12,7 @@ module.exports = merge(common, {
       safe: true,
       systemvars: true,
     }),
-    new webpack.DefinePlugin({
+    new webpack.EnvironmentPlugin({
       "process.env": {
         FRONT_URL: JSON.stringify(process.env.FRONT_URL),
       },
