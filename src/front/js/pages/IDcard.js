@@ -24,6 +24,9 @@ export const IDcard = () => {
   const [guest, setGuest] = useState("");
   const params = useParams();
 
+  const sampleImage =
+    "https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png";
+
   const getTheCurrentURL = `${process.env.FRONT_URL}/admin_login`;
 
   useEffect(() => {
@@ -37,7 +40,7 @@ export const IDcard = () => {
       <QRCode value={getTheCurrentURL} />
       <div className="card">
         <img
-          src="https://www.pinclipart.com/picdir/middle/411-4115229_profile-account-contact-avatar-portrait-man-users-comments.png"
+          src={guest.image || sampleImage}
           alt="avatar"
           style={{ width: "100% " }}
         />
