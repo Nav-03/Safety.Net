@@ -1,10 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { Context } from "../store/appContext";
-import dark from "../../img/dark.jpg";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import "../../styles/eventdetails.css";
-import event1 from "../../img/event-photo-01.jpg";
-import event2 from "../../img/event-photo-02.jpg";
 
 export const Eventdetails = () => {
   const history = useHistory();
@@ -13,10 +9,10 @@ export const Eventdetails = () => {
     [history]
   );
   return (
-    <div>
-      <img id="imagen" src={dark} alt=""></img>
+    <div className="main-event-container">
+      {/* <img id="imagen" src={dark} alt=""></img> */}
       <div id="header">Upcoming Events...</div>
-      <div id="bigbox">
+      <div className="" id="bigbox">
         <div onClick={handleOnClick} className="card">
           <div className="card-image"></div>
           <div className="card-text">
@@ -27,6 +23,7 @@ export const Eventdetails = () => {
               temporibus omnis illum maxime quod deserunt eligendi dolor
             </p>
           </div>
+
           <div className="card-stats">
             <div className="stat">
               <div className="value">
