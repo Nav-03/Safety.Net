@@ -5,7 +5,7 @@ export const Footer = () => (
     <p>
       Made with <i className="fa fa-heart text-danger" /> by{" "}
       <a className="text-light" href="http://www.4geeksacademy.com">
-        3Geeks Students
+        4Geeks Students
       </a>
     </p>
   </footer>
