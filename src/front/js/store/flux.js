@@ -90,7 +90,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       loadGuest: async (id) => {
-        const response = await fetch(process.env.BACKEND_URL + `/api/guest/${id}`);
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/guest/${id}`
+        );
         if (response.status === 200) {
           const payload = await response.json();
           // setStore({ guest: payload });
@@ -98,7 +100,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       getUserFromToken: async (token) => {
-        const response = await fetch(process.env.BACKEND_URL + `/api/guest/token/${token}`);
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/guest/token/${token}`
+        );
         if (response.status === 200) {
           const payload = await response.json();
           // setStore({ guest: payload });
@@ -112,11 +116,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ guest: payload });
         }
       },
-      addPermissions: async (vip, valet, dinner) => {
+      addPermissions: async (eventId, guest, vip, valet, dinner) => {
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            event_id: eventId,
+            guest,
             vip: vip,
             valet: valet,
             dinner: dinner,
