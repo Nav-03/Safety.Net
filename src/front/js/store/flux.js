@@ -70,13 +70,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           return await response.json();
         }
       },
-      addGuest: async (name, email) => {
+      addGuest: async (name, email, image) => {
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             name: name,
             email: email,
+            image
           }),
         };
         const response = await fetch(

@@ -15,6 +15,7 @@ export const Registration = (props) => {
     vip: false,
     valet: false,
     dinner: false,
+    image: "",
   });
 
   const handleChange = (event) => {
@@ -24,16 +25,17 @@ export const Registration = (props) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const imageCapture = (imageBase) => {
+    setFormData({ ...formData, image: imageBase });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, vip, valet, dinner } = formData;
+    const { name, email, vip, valet, dinner, image } = formData;
     console.log(formData);
-    actions.addGuest(name, email).then((response) => {
-      history.push(`/IDcard/${response.id}`);
-      // actions
-      //   .addPermissions(1, response, vip, valet, dinner)
-      //   .then(() => history.push(`/id/${response.id}`));
-    });
+    // actions.addGuest(name, email, image).then((response) => {
+    //   history.push(`/IDcard/${response.id}`);
+    // });
   };
 
   return (
@@ -43,7 +45,7 @@ export const Registration = (props) => {
         <div className="wrapper">
           <h2>Registration</h2>
           <form onSubmit={handleSubmit}>
-            <WebcamCapture />
+            <WebcamCapture onImageCapture={imageCapture} />
             <div className="input-box">
               <input
                 onChange={handleChange}
