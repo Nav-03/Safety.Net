@@ -99,8 +99,10 @@
   color: white;
 }
 .card-stats .border {
-  border-left: 1px solid rgb(172, 26, 87);
-  border-right: 1px solid rgb(172, 26, 87);
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: 1px solid rgb(172, 26, 87) !important;
+  border-right: 1px solid rgb(172, 26, 87) !important;
 }
 .card-stats .value {
   font-size: 22px;

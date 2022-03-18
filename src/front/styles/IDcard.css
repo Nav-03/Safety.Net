@@ -1,8 +1,18 @@
+.card-container {
+  background: url("https://storage.googleapis.com/rafaellovera/dark.jpg")
+    no-repeat;
+  background-size: cover;
+}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
-  margin: auto;
+  margin: 30px auto !important;
   text-align: center;
+}
+
+.card svg {
+  color: white;
 }
 
 .title {
