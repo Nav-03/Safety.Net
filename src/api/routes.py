@@ -75,7 +75,7 @@ def create_guest():
     from_email='from_email@example.com',
     to_emails=email,
     subject='Welcome to Safety.Net',
-    html_content=os.getenv("FRONTEND_URL", "")+ f"/guest_scan?token={request.args.get('token')}")
+    html_content=os.getenv("FRONT_URL", "")+ f"/IDcard/{guest.id}")
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
