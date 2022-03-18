@@ -61,6 +61,7 @@ class Guest(db.Model):
             "event_id": self.event_id,
             "email": self.email,
             "name": self.name,
+            "image": self.image,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             # do not serialize the password, its a security breach
