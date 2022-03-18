@@ -41,7 +41,7 @@ export const Eventdetails = () => {
             </div>
           </div>
         </div>
-        <div className="card">
+        <div onClick={handleOnClick} className="card">
           <div className="card-image card2"></div>
           <div className="card-text card2">
             <span className="date">04/10/2022</span>
@@ -68,7 +68,7 @@ export const Eventdetails = () => {
             </div>
           </div>
         </div>
-        <div className="card">
+        <div onClick={handleOnClick} className="card">
           <div className="card-image card3"></div>
           <div className="card-text card3">
             <span className="date">04/21/2022</span>
