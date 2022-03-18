@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nanum+Gothic&display=swap");
 .my-navbar {
   background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+  
 }
 .my-navbar a {
+  font-family: "Nanum Gothic", sans-serif;
   color: white;
 }
 .my-navbar .nav-link {
@@ -14,6 +17,7 @@
 
 .navbar-brand {
   color: white !important;
+  font-size: 35px;
 }
 
 .my-navbar .btn {
