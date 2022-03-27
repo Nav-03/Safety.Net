@@ -26,3 +26,5 @@ The main reason for this platform is to be able to hold all parties accountable 
 should a disaster happen during an event, having a list of all those who where actively attending could be invaluable.
 Security is based on tokens on a time limit with future implementation of a location based system.
 customer database will be held (first name, last name and email) for ease of use for future events.
+
+Project still in development
