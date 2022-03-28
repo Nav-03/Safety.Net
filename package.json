@@ -11,21 +11,17 @@
     "build": "webpack --config webpack.prod.js"
   },
   "author": {
-    "name": "Nav Sky Rafael",
-    "url": "TBD"
+    "name": "Navil, Rafael",
+    "url": "https://safety-net-4geeks.herokuapp.com/landing_page"
   },
   "contributors": [
     {
-      "name": "Nav Gabrie",
-      "url": "http://github.com/xxxxxx"
+      "name": "Navil Gabrie",
+      "url": "https://github.com/Nav-03"
     },
     {
       "name": "Rafael Lovera",
-      "url": "http://github.com/xxxxxx"
-    },
-    {
-      "name": "Sky Dotel",
-      "url": "http://github.com/xxxxxx"
+      "url": "https://github.com/RafaeLovera6"
     }
   ],
   "license": "FREE",
