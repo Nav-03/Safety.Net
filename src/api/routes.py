@@ -36,7 +36,7 @@ def coordinator():
     return jsonify({"id": coordinator.id, "email": coordinator.email }), 200
 
 
-
+# QR Code Redirect for dynamic QR code generator. redirect for guest and for coordinator
 @api.route('/redirect', methods=['GET'])
 @jwt_required()
 def redirect_qr_scan():
@@ -54,7 +54,7 @@ def redirect_qr_scan():
 
 
 
-
+# send email after guest registration
 @api.route('/guest', methods=['POST'])
 def create_guest():
     guests = request.get_json()

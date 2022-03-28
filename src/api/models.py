@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-
+# relationship table for evnt table and coordinator table
 Event_Coordinator = db.Table('association',
     db.Column("event_id", db.Integer, db.ForeignKey("event.id"), primary_key=True),
     db.Column("coordinator_id", db.Integer, db.ForeignKey("coordinator.id"), primary_key=True)
@@ -31,7 +31,7 @@ class Coordinator(db.Model):
 
 
 
-
+# relationship table for guest table and permission table
 GuestPermission = db.Table('guest_association',
     db.Column("guest_id", db.Integer, db.ForeignKey("guest.id"), primary_key=True),
     db.Column("permission_id", db.Integer, db.ForeignKey("permission.id"), primary_key=True)

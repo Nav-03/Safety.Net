@@ -1,5 +1,4 @@
-//Missing putting the all the paths
-
+// Links to dropdown in Navbar
 export const navItems = [
   {
     id: 1,
