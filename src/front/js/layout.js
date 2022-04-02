@@ -2,11 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+
 import { Coordinator } from "./pages/coordinator.js";
-import { Members } from "./pages/members.js";
 import { Main_event } from "./pages/main_event.js";
 import { IDcard } from "./pages/IDcard.js";
 import { AdminLogin } from "./pages/admin_login.js";
@@ -43,9 +40,6 @@ const Layout = () => {
             <Route exact path="/IDcard/:token">
               <IDcard />
             </Route>
-            <Route exact path="/demo">
-              <Demo />
-            </Route>
             <Route exact path="/registered">
               <Registered />
             </Route>
@@ -54,9 +48,6 @@ const Layout = () => {
             </Route>
             <Route exact path="/registration">
               <Registration />
-            </Route>
-            <Route exact path="/single/:theid">
-              <Single />
             </Route>
             <Route exact path="/landing_page">
               <Landing />

@@ -60,10 +60,10 @@ export const AdminLogin = () => {
               <h3>I accept all terms and condition</h3>
             </div>
             <div className="input-box button">
-              <input onChange={handleOnClick} type="Submit" value="Login Now" />
+              <input onChange={handleOnClick} type="Submit" value="Create Account" />
             </div>
             <div className="text">
-              {/* <h3>Already have an account? <a href="#">Login now</a></h3> */}
+              <h3>Already have an account? <a href="#">Login now</a></h3>
             </div>
           </form>
         </div>
