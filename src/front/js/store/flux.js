@@ -43,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           return await response.json();
         }
       },
-      addGuest: async (name, email, image) => {
+      addGuest: async (name, email, image, id) => {
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,10 +51,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: name,
             email: email,
             image: image,
+            id: id
           }),
         };
         const response = await fetch(
-          process.env.BACKEND_URL + `/api/guest`,
+          process.env.BACKEND_URL + `/api/guest/${id}`,
           options
         );
         if (response.status === 200) {
