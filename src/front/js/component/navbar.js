@@ -15,7 +15,7 @@ export const NavbarComponent = () => {
 
   return (
     <Navbar bg="dark" expand="lg" className="my-navbar">
-      <Container>
+      <Container className="my-navbar-container">
         <Navbar.Brand href="/">Safety.Net</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -32,7 +32,7 @@ export const NavbarComponent = () => {
           </Nav>
         </Navbar.Collapse>
 
-        <Navbar.Collapse className="justify-content-end">
+        <Navbar.Collapse className=" admin-button justify-content-end">
           <Button variant="outline-info boton">
             <Nav.Link href="/admin_login">Admin</Nav.Link>
           </Button>
