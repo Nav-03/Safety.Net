@@ -46,8 +46,11 @@ export const Contactus = () => {
                         </span>
                         <div className="address text-left">
                           {" "}
-                          <span>Address</span>
-                          <p>contact@bbbootstrap.com</p>
+                          <span>Email Address</span>
+                          <p>navil.gabriel@gmail.com
+                            <br />
+                            rafaelovera6@gmail.com
+                          </p>
                         </div>
                       </div>
                     </div>
