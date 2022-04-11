@@ -25,6 +25,7 @@ export const AdminLogin = () => {
               e.preventDefault();
               actions.createNewSession(email, password).then((session) => {
                 history.push("/coordinator");
+
               });
             }}
             action="#"

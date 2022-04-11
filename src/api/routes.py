@@ -21,6 +21,11 @@ api = Blueprint('api', __name__)
 
 @api.route('/coordinator', methods=['POST'])
 def create_coordinator():
+    coordinator = request.get_json()
+    if request.json is None:
+        return jsonify({"msg":"Missing the payload"}), 400
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
     coordinator = Coordinator(email=email, password=password)
     db.session.add(coordinator)
     db.session.commit()
@@ -53,7 +58,7 @@ def redirect_qr_scan():
 
 
 
-
+# guest registration 
 # send email after guest registration
 @api.route('/guest', methods=['POST'])
 def create_guest():

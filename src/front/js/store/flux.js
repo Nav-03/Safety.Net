@@ -43,6 +43,35 @@ const getState = ({ getStore, getActions, setStore }) => {
           return await response.json();
         }
       },
+      addCoordinator: async (name, email) => {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/coordinator/${id}`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          setStore({ coordinator: payload });
+          return payload;
+        }
+      },
+      loadCoordinator: async (id) => {
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/coordinator/${id}`
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          // setStore({ guest: payload });
+          return payload;
+        }
+      },
       addGuest: async (name, email, image, id) => {
         const options = {
           method: "POST",
