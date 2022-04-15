@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 
 import { Coordinator } from "./pages/coordinator.js";
+import { coordinatorRegistration } from "./pages/coordinator_registration.js";
 import { Main_event } from "./pages/main_event.js";
 import { IDcard } from "./pages/IDcard.js";
 import { AdminLogin } from "./pages/admin_login.js";
@@ -36,6 +37,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/coordinator">
               <Coordinator />
+            </Route>
+            <Route exact path="/coordinator_registration">
+              <coordinatorRegistration />
             </Route>
             <Route exact path="/IDcard/:token">
               <IDcard />
