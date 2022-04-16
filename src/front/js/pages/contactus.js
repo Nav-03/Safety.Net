@@ -1,6 +1,41 @@
-import React from "react";
+
+import React, { useContext, useState } from "react";
+import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
+import "../../styles/registration.css";
+import dark from "../../img/dark.jpg";
+import { WebcamCapture } from "../component/Webcam.jsx";
+import { Form } from "react-bootstrap";
 
 export const Contactus = () => {
+  const history = useHistory();
+  const { store, actions } = useContext(Context);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    setFormData({ ...formData, [name]: target.value });
+  };
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, email, message } = formData;
+    console.log(formData);
+    actions.addGuest(name, email, message).then((response) => {
+      history.push(`/registered`);
+    });
+  };
+
+
+
+
+
   return (
     <div>
       <div className="contactUs">
