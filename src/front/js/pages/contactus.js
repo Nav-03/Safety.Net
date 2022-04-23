@@ -4,7 +4,6 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import "../../styles/registration.css";
 import dark from "../../img/dark.jpg";
-import { WebcamCapture } from "../component/Webcam.jsx";
 import { Form } from "react-bootstrap";
 
 export const Contactus = () => {
