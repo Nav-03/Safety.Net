@@ -114,3 +114,20 @@ class Event(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
         }
+
+
+class contactUs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(80), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    message = db.Column(db.Text)
+    def __repr__(self):
+        return f'contactUs : {self.name}'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "name": self.name,
+            "message": self.message,
+        }

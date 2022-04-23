@@ -158,6 +158,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(permissions);
         }
       },
+      contactMessage: async (name, email, message) => {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/guest/${id}`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          setStore({ contactMessage: payload });
+          return payload;
+        }
+      },
     },
   };
 };

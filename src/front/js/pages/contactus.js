@@ -91,29 +91,39 @@ export const Contactus = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="text-center px-1">
-                      <div className="forms p-4 py-5 bg-white">
+                      <form onSubmit={handleSubmit} className="forms p-4 py-5 bg-white">
                         <h5>Send Message</h5>
                         <div className="mt-4 inputs">
                           <input
+                            onChange={handleChange}
+                            name="name"
                             type="text"
                             className="form-control"
                             placeholder="Name"
+                            required
                           />
                           <input
+                            onChange={handleChange}
+                            name="email"
                             type="text"
                             className="form-control"
                             placeholder="Email"
+                            required
                           />
                           <textarea
+                            onChange={handleChange}
+                            name="message"
+                            type="text"
                             className="form-control"
                             placeholder="Type your message"
+                            required
                           ></textarea>
                         </div>
                         <div className="button mt-4 text-left">
                           {" "}
                           <button className="btn btn-dark">Send</button>{" "}
                         </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>

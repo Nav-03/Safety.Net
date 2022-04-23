@@ -196,3 +196,28 @@ def create_token():
 
 
 
+@api.route('/contactUs', methods=['POST'])
+def contact_message():
+    contactUs = request.get_json()
+    if request.json is None:
+        return jsonify({"msg":"Missing the payload"}), 400
+    email = request.json.get('email', None)
+    name = request.json.get('name', None)
+    message= request.json.get('message', None)
+    contactUs = ContactUs(name=name,email=email,message=message) 
+    db.session.add(contactUs)
+    db.session.commit()
+    message = Mail(
+    from_email='from_email@example.com',
+    to_emails=email,
+    subject='Welcome to Safety.Net',
+    html_content=os.getenv("FRONT_URL", ""))
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e.message)
+    return jsonify(guest.serialize())
