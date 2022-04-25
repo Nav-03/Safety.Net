@@ -5,7 +5,7 @@ import "../../styles/coordinator_registration.css";
 import dark from "../../img/dark.jpg";
 import { Form } from "react-bootstrap";
 
-export const coordinatorRegistration = (props) => {
+export const CoordinatorRegistration = (props) => {
     const history = useHistory();
     const { store, actions } = useContext(Context);
     const [formData, setFormData] = useState({

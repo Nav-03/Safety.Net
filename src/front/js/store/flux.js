@@ -43,13 +43,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           return await response.json();
         }
       },
-      addCoordinator: async (name, email) => {
+      addCoordinator: async (name, email, id) => {
         const options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             name: name,
             email: email,
+            id: id
           }),
         };
         const response = await fetch(
@@ -72,6 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           return payload;
         }
       },
+
       addGuest: async (name, email, image, id) => {
         const options = {
           method: "POST",
@@ -126,7 +128,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             event_id: eventId,
-            guest,
+            guest: guest,
             vip: vip,
             valet: valet,
             dinner: dinner,

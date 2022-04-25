@@ -63,7 +63,7 @@ export const AdminLogin = () => {
               <input onChange={handleOnClick} type="Submit" value="Login" />
             </div>
             <div className="text">
-              <h3>Already have an account? <a href="#">Login now</a></h3>
+              <h3>Need an account? <a href="/coordinator_registration">Create Account</a></h3>
             </div>
           </form>
         </div>
