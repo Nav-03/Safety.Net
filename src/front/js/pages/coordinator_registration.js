@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
-import "../../styles/registration.css";
+import "../../styles/coordinator_registration.css";
 import dark from "../../img/dark.jpg";
 import { Form } from "react-bootstrap";
 

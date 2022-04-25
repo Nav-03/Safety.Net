@@ -9,6 +9,7 @@ import "../styles/coordinator.css";
 import "../styles/IDcard.css";
 import "../styles/contactus.css";
 import "../styles/footer.css";
+import "../styles/coordinator_registration.css"
 
 //import your own components
 import Layout from "./layout";
