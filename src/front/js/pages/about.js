@@ -11,8 +11,9 @@ export const About = () => {
           measures. We intend to make attending large gatherings feel safe and
           better organized. This process is designed to be simple for the
           customer while building a temporary secure framework around hosting
-          events. This platform allows you to create events that issue “guest
+          events working offline. This platform allows you to create events that issue “guest
           passes” which will be used as tickets while attending the event.
+          System is designed to function while offline or in remote areas.
         </h2>
       </div>
     </div>

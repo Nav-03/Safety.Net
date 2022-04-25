@@ -75,7 +75,7 @@ body {
 }
 
 #showcase .button:hover {
-  background: rgb(0, 212, 212);;
+  background: rgb(0, 212, 212);
   color: rgb(255, 255, 255);
 }
 
@@ -88,7 +88,6 @@ body {
 #titulo {
   text-decoration: underline;
   text-decoration-color: rgb(0, 212, 212);
-  
 }
 
 /* #section-b {

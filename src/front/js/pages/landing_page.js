@@ -16,7 +16,7 @@ export const Landing = () => {
           We are a dynamic platform for hosting events and implementing security measures.
         </p>
         <Link to="/main_event" className="button">
-          Read More
+          Go To Events
         </Link>
       </header>
       <div>
