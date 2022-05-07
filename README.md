@@ -1,5 +1,11 @@
 Safety.Net
 
+Demo: https://safety-net-4geeks.herokuapp.com/landing_page
+
+
+        Coordinator test account - email: test@email.com
+                                   password: Test
+
 Dynamic platform for hosting events and implementing security measures.
 
 We intend to make attending large gatherings feel safe and better organized.
