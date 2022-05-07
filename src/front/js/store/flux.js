@@ -101,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         );
         if (response.status === 200) {
           const payload = await response.json();
-          // setStore({ guest: payload });
+          setStore({ guest: payload });
           return payload;
         }
       },
