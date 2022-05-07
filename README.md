@@ -1,5 +1,7 @@
 Safety.Net
 
+Demo:https://safety-net-4geeks.herokuapp.com/landing_page
+
 Dynamic platform for hosting events and implementing security measures.
 
 We intend to make attending large gatherings feel safe and better organized.
